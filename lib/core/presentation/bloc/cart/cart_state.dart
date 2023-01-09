@@ -1,0 +1,37 @@
+part of 'cart_bloc.dart';
+
+@freezed
+class CartState with _$CartState {
+  const CartState._();
+
+  const factory CartState.empty() = _CartStartEmpty;
+
+  const factory CartState.loading() = _CartStartLoading;
+
+  const factory CartState.loaded(List<CoffeeItemOrder> items) =
+      _CartStartLoaded;
+
+  const factory CartState.error(
+    List<CoffeeItemOrder> items,
+    String message,
+  ) = _CartStartError;
+
+  double get totalPrice => maybeWhen<double>(
+        orElse: () => 0,
+        loaded: (list) =>
+            list.map<double>((e) => e.coffee.price * e.count).toList().reduce(
+                  (value, element) => value + element,
+                ),
+      );
+
+  double get taxes => maybeWhen<double>(
+        orElse: () => 0,
+        loaded: (list) =>
+            16 *
+            list.map<double>((e) => e.count.toDouble()).toList().reduce(
+                  (value, element) => value + element,
+                ),
+      );
+
+  double get deliveryCharges => maybeWhen<double>(orElse: () => 50);
+}
