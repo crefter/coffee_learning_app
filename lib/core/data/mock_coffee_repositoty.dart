@@ -1,7 +1,7 @@
 import 'package:learning/core/domain/entity/coffee.dart';
 import 'package:learning/core/domain/repository/coffee_repository.dart';
 
-class CoffeeRepositoryImpl implements CoffeeRepository {
+class MockCoffeeRepository implements CoffeeRepository {
   @override
   Future<List<Coffee>> getAll() async {
     return const <Coffee>[

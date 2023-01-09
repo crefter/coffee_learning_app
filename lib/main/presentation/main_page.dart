@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learning/core/presentation/bloc/cart/cart_bloc.dart';
-import 'package:learning/core/data/cart_repository_impl.dart';
-import 'package:learning/core/data/coffee_repositoty_impl.dart';
+import 'package:learning/core/data/mock_cart_repository.dart';
+import 'package:learning/core/data/mock_coffee_repositoty.dart';
 import 'package:learning/core/domain/repository/coffee_repository.dart';
 import 'package:learning/core/presentation/app_router.gr.dart';
 import 'package:learning/core/presentation/bloc/favorite_coffees/favorite_coffees_bloc.dart';
@@ -17,7 +17,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  final CoffeeRepository _coffeeRepository = CoffeeRepositoryImpl();
+  final CoffeeRepository _coffeeRepository = MockCoffeeRepository();
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class _MainPageState extends State<MainPage> {
         ),
         BlocProvider(
           create: (_) => CartBloc(
-            cartRepository: CartRepositoryImpl(),
+            cartRepository: MockCartRepository(),
           ),
           lazy: false,
         ),

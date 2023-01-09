@@ -2,7 +2,7 @@ import 'package:learning/core/domain/entity/coffee.dart';
 import 'package:learning/core/domain/entity/coffee_item_order.dart';
 import 'package:learning/core/domain/repository/cart_repository.dart';
 
-class CartRepositoryImpl implements CartRepository {
+class MockCartRepository implements CartRepository {
   @override
   Future<List<CoffeeItemOrder>> get() async {
     return const <CoffeeItemOrder>[
