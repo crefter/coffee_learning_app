@@ -27,7 +27,7 @@ class _MainPageState extends State<MainPage> {
         BlocProvider(
           create: (_) => CoffeeListBloc(
             coffeeRepository: _coffeeRepository,
-          ),
+          )..add(const CoffeeListEvent.startLoading()),
         ),
         BlocProvider(
           create: (_) => FavoriteCoffeesBloc(
@@ -37,7 +37,7 @@ class _MainPageState extends State<MainPage> {
         BlocProvider(
           create: (_) => CartBloc(
             cartRepository: MockCartRepository(),
-          ),
+          )..add(const CartEvent.load()),
           lazy: false,
         ),
       ],

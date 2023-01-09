@@ -22,7 +22,6 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         minus: (event) => _onMinus(event, emit),
       );
     });
-    add(const CartEvent.load());
   }
 
   Future<void> _onAdd(_CartEventAdd event, Emitter<CartState> emit) async {

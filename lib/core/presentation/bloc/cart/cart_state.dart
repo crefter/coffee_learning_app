@@ -4,17 +4,17 @@ part of 'cart_bloc.dart';
 class CartState with _$CartState {
   const CartState._();
 
-  const factory CartState.empty() = _CartStartEmpty;
+  const factory CartState.empty() = CartStateEmpty;
 
-  const factory CartState.loading() = _CartStartLoading;
+  const factory CartState.loading() = CartStateLoading;
 
   const factory CartState.loaded(List<CoffeeItemOrder> items) =
-      _CartStartLoaded;
+      CartStateLoaded;
 
   const factory CartState.error(
     List<CoffeeItemOrder> items,
     String message,
-  ) = _CartStartError;
+  ) = CartStateError;
 
   double get totalPrice => maybeWhen<double>(
         orElse: () => 0,

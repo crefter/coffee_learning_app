@@ -21,7 +21,6 @@ class CoffeeListBloc extends Bloc<CoffeeListEvent, CoffeeListState> {
         typeSelected: (event) => _typeSelected(event, emit),
       );
     });
-    add(const CoffeeListEvent.startLoading());
   }
 
   Future<void> _startLoading(_StartLoadingCoffeeListEvent event,
