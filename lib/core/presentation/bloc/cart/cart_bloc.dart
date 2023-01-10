@@ -56,6 +56,10 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         error: (list, _) => list,
       ),
     );
+    if (items.isEmpty) {
+      emit(const CartState.empty());
+      return;
+    }
     items.removeAt(event.index);
     if (items.isEmpty) {
       emit(const CartState.empty());
