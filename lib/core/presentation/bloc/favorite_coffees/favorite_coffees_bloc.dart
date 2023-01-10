@@ -28,8 +28,13 @@ class FavoriteCoffeesBloc
     await state.maybeWhen<Future<void>>(
         empty: () async {
           emit(const FavoriteCoffeesState.loading());
-          final List<Coffee> favorites = await coffeeRepository.getFavorites();
-          emit(FavoriteCoffeesState.loaded(favorites));
+          try {
+            final List<Coffee> favorites =
+                await coffeeRepository.getFavorites();
+            emit(FavoriteCoffeesState.loaded(favorites));
+          } catch (error) {
+            emit(FavoriteCoffeesState.error([], error.toString()));
+          }
         },
         orElse: () async {});
   }
