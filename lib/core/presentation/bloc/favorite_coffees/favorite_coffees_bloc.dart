@@ -42,7 +42,9 @@ class FavoriteCoffeesBloc
   Future<void> _onUpdate(_FavoriteCoffeesEventUpdate event,
       Emitter<FavoriteCoffeesState> emit) async {
     await state.maybeWhen(
-      orElse: () async {},
+      orElse: () async {
+        emit(const FavoriteCoffeesState.empty());
+      },
       loaded: (favorites) async {
         emit(const FavoriteCoffeesState.loading());
         final newFavorites = List.of(favorites);
