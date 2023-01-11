@@ -26,7 +26,7 @@ class _CoffeeDetailsPageState extends State<CoffeeDetailsPage> {
   @override
   void didChangeDependencies() {
     context.read<FavoriteCoffeesBloc>().add(
-          FavoriteCoffeesEvent.load(widget.coffee),
+          const FavoriteCoffeesEvent.load(),
         );
     super.didChangeDependencies();
   }
