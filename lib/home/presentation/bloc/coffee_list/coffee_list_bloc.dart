@@ -26,10 +26,14 @@ class CoffeeListBloc extends Bloc<CoffeeListEvent, CoffeeListState> {
   Future<void> _startLoading(_StartLoadingCoffeeListEvent event,
       Emitter<CoffeeListState> emit,) async {
     emit(const CoffeeListState.loading());
-    final List<Coffee> coffees = await coffeeRepository.getAll();
-    final List<Coffee> filteredCoffees =
-    coffees.where((coffee) => coffee.type.index == 0).toList();
-    emit(CoffeeListState.loaded(coffees, filteredCoffees));
+    try {
+      final List<Coffee> coffees = await coffeeRepository.getAll();
+      final List<Coffee> filteredCoffees =
+      coffees.where((coffee) => coffee.type.index == 0).toList();
+      emit(CoffeeListState.loaded(coffees, filteredCoffees));
+    } catch (error) {
+      emit(CoffeeListState.error(error.toString()));
+    }
   }
 
   Future<void> _typeSelected(_TypeSelectedCoffeeListEvent event,
