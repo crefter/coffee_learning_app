@@ -94,8 +94,8 @@ void main() {
     });
     test(
         'should return [empty, loaded, loaded, loaded] '
-        'when add, add and delete event; list length=2 and contains CoffeeItemOrder',
-        () async {
+        'when add, add and delete event; '
+        'list length=2 and contains CoffeeItemOrder', () async {
       final states = <CartState>[];
       expect(cartBloc.state, empty);
       final mock1 = MockCoffeeItemOrder();
