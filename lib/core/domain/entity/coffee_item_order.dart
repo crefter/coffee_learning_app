@@ -3,6 +3,9 @@ import 'package:learning/core/domain/entity/coffee.dart';
 
 part 'coffee_item_order.freezed.dart';
 
+part 'coffee_item_order.g.dart';
+
+@JsonEnum(valueField: 'milkName')
 enum Milk {
   oatMilk('Oat Milk'),
   soyMilk('Soy Milk'),
@@ -20,4 +23,7 @@ class CoffeeItemOrder with _$CoffeeItemOrder {
     @Default(Milk.oatMilk) Milk milk,
     required int count,
   }) = _CoffeeItemOrder;
+
+  factory CoffeeItemOrder.fromJson(Map<String, dynamic> json) =>
+      _$CoffeeItemOrderFromJson(json);
 }
