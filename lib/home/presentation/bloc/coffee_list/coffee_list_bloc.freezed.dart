@@ -325,6 +325,7 @@ mixin _$CoffeeListState {
     required TResult Function(
             List<Coffee> coffees, List<Coffee> filteredCoffees)
         loaded,
+    required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -333,6 +334,7 @@ mixin _$CoffeeListState {
     TResult? Function()? loading,
     TResult? Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
         loaded,
+    TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -341,28 +343,32 @@ mixin _$CoffeeListState {
     TResult Function()? loading,
     TResult Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
         loaded,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_EmptyCoffeeListState value) empty,
-    required TResult Function(_LoadingCoffeeListState value) loading,
-    required TResult Function(_LoadedCoffeeListState value) loaded,
+    required TResult Function(EmptyCoffeeListState value) empty,
+    required TResult Function(LoadingCoffeeListState value) loading,
+    required TResult Function(LoadedCoffeeListState value) loaded,
+    required TResult Function(ErrorCoffeeListState value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_EmptyCoffeeListState value)? empty,
-    TResult? Function(_LoadingCoffeeListState value)? loading,
-    TResult? Function(_LoadedCoffeeListState value)? loaded,
+    TResult? Function(EmptyCoffeeListState value)? empty,
+    TResult? Function(LoadingCoffeeListState value)? loading,
+    TResult? Function(LoadedCoffeeListState value)? loaded,
+    TResult? Function(ErrorCoffeeListState value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_EmptyCoffeeListState value)? empty,
-    TResult Function(_LoadingCoffeeListState value)? loading,
-    TResult Function(_LoadedCoffeeListState value)? loaded,
+    TResult Function(EmptyCoffeeListState value)? empty,
+    TResult Function(LoadingCoffeeListState value)? loading,
+    TResult Function(LoadedCoffeeListState value)? loaded,
+    TResult Function(ErrorCoffeeListState value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -387,25 +393,25 @@ class _$CoffeeListStateCopyWithImpl<$Res, $Val extends CoffeeListState>
 }
 
 /// @nodoc
-abstract class _$$_EmptyCoffeeListStateCopyWith<$Res> {
-  factory _$$_EmptyCoffeeListStateCopyWith(_$_EmptyCoffeeListState value,
-          $Res Function(_$_EmptyCoffeeListState) then) =
-      __$$_EmptyCoffeeListStateCopyWithImpl<$Res>;
+abstract class _$$EmptyCoffeeListStateCopyWith<$Res> {
+  factory _$$EmptyCoffeeListStateCopyWith(_$EmptyCoffeeListState value,
+          $Res Function(_$EmptyCoffeeListState) then) =
+      __$$EmptyCoffeeListStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_EmptyCoffeeListStateCopyWithImpl<$Res>
-    extends _$CoffeeListStateCopyWithImpl<$Res, _$_EmptyCoffeeListState>
-    implements _$$_EmptyCoffeeListStateCopyWith<$Res> {
-  __$$_EmptyCoffeeListStateCopyWithImpl(_$_EmptyCoffeeListState _value,
-      $Res Function(_$_EmptyCoffeeListState) _then)
+class __$$EmptyCoffeeListStateCopyWithImpl<$Res>
+    extends _$CoffeeListStateCopyWithImpl<$Res, _$EmptyCoffeeListState>
+    implements _$$EmptyCoffeeListStateCopyWith<$Res> {
+  __$$EmptyCoffeeListStateCopyWithImpl(_$EmptyCoffeeListState _value,
+      $Res Function(_$EmptyCoffeeListState) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_EmptyCoffeeListState implements _EmptyCoffeeListState {
-  const _$_EmptyCoffeeListState();
+class _$EmptyCoffeeListState implements EmptyCoffeeListState {
+  const _$EmptyCoffeeListState();
 
   @override
   String toString() {
@@ -415,7 +421,7 @@ class _$_EmptyCoffeeListState implements _EmptyCoffeeListState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_EmptyCoffeeListState);
+        (other.runtimeType == runtimeType && other is _$EmptyCoffeeListState);
   }
 
   @override
@@ -429,6 +435,7 @@ class _$_EmptyCoffeeListState implements _EmptyCoffeeListState {
     required TResult Function(
             List<Coffee> coffees, List<Coffee> filteredCoffees)
         loaded,
+    required TResult Function(String error) error,
   }) {
     return empty();
   }
@@ -440,6 +447,7 @@ class _$_EmptyCoffeeListState implements _EmptyCoffeeListState {
     TResult? Function()? loading,
     TResult? Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
         loaded,
+    TResult? Function(String error)? error,
   }) {
     return empty?.call();
   }
@@ -451,6 +459,7 @@ class _$_EmptyCoffeeListState implements _EmptyCoffeeListState {
     TResult Function()? loading,
     TResult Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
         loaded,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -462,9 +471,10 @@ class _$_EmptyCoffeeListState implements _EmptyCoffeeListState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_EmptyCoffeeListState value) empty,
-    required TResult Function(_LoadingCoffeeListState value) loading,
-    required TResult Function(_LoadedCoffeeListState value) loaded,
+    required TResult Function(EmptyCoffeeListState value) empty,
+    required TResult Function(LoadingCoffeeListState value) loading,
+    required TResult Function(LoadedCoffeeListState value) loaded,
+    required TResult Function(ErrorCoffeeListState value) error,
   }) {
     return empty(this);
   }
@@ -472,9 +482,10 @@ class _$_EmptyCoffeeListState implements _EmptyCoffeeListState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_EmptyCoffeeListState value)? empty,
-    TResult? Function(_LoadingCoffeeListState value)? loading,
-    TResult? Function(_LoadedCoffeeListState value)? loaded,
+    TResult? Function(EmptyCoffeeListState value)? empty,
+    TResult? Function(LoadingCoffeeListState value)? loading,
+    TResult? Function(LoadedCoffeeListState value)? loaded,
+    TResult? Function(ErrorCoffeeListState value)? error,
   }) {
     return empty?.call(this);
   }
@@ -482,9 +493,10 @@ class _$_EmptyCoffeeListState implements _EmptyCoffeeListState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_EmptyCoffeeListState value)? empty,
-    TResult Function(_LoadingCoffeeListState value)? loading,
-    TResult Function(_LoadedCoffeeListState value)? loaded,
+    TResult Function(EmptyCoffeeListState value)? empty,
+    TResult Function(LoadingCoffeeListState value)? loading,
+    TResult Function(LoadedCoffeeListState value)? loaded,
+    TResult Function(ErrorCoffeeListState value)? error,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -494,30 +506,30 @@ class _$_EmptyCoffeeListState implements _EmptyCoffeeListState {
   }
 }
 
-abstract class _EmptyCoffeeListState implements CoffeeListState {
-  const factory _EmptyCoffeeListState() = _$_EmptyCoffeeListState;
+abstract class EmptyCoffeeListState implements CoffeeListState {
+  const factory EmptyCoffeeListState() = _$EmptyCoffeeListState;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCoffeeListStateCopyWith<$Res> {
-  factory _$$_LoadingCoffeeListStateCopyWith(_$_LoadingCoffeeListState value,
-          $Res Function(_$_LoadingCoffeeListState) then) =
-      __$$_LoadingCoffeeListStateCopyWithImpl<$Res>;
+abstract class _$$LoadingCoffeeListStateCopyWith<$Res> {
+  factory _$$LoadingCoffeeListStateCopyWith(_$LoadingCoffeeListState value,
+          $Res Function(_$LoadingCoffeeListState) then) =
+      __$$LoadingCoffeeListStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCoffeeListStateCopyWithImpl<$Res>
-    extends _$CoffeeListStateCopyWithImpl<$Res, _$_LoadingCoffeeListState>
-    implements _$$_LoadingCoffeeListStateCopyWith<$Res> {
-  __$$_LoadingCoffeeListStateCopyWithImpl(_$_LoadingCoffeeListState _value,
-      $Res Function(_$_LoadingCoffeeListState) _then)
+class __$$LoadingCoffeeListStateCopyWithImpl<$Res>
+    extends _$CoffeeListStateCopyWithImpl<$Res, _$LoadingCoffeeListState>
+    implements _$$LoadingCoffeeListStateCopyWith<$Res> {
+  __$$LoadingCoffeeListStateCopyWithImpl(_$LoadingCoffeeListState _value,
+      $Res Function(_$LoadingCoffeeListState) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_LoadingCoffeeListState implements _LoadingCoffeeListState {
-  const _$_LoadingCoffeeListState();
+class _$LoadingCoffeeListState implements LoadingCoffeeListState {
+  const _$LoadingCoffeeListState();
 
   @override
   String toString() {
@@ -527,8 +539,7 @@ class _$_LoadingCoffeeListState implements _LoadingCoffeeListState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_LoadingCoffeeListState);
+        (other.runtimeType == runtimeType && other is _$LoadingCoffeeListState);
   }
 
   @override
@@ -542,6 +553,7 @@ class _$_LoadingCoffeeListState implements _LoadingCoffeeListState {
     required TResult Function(
             List<Coffee> coffees, List<Coffee> filteredCoffees)
         loaded,
+    required TResult Function(String error) error,
   }) {
     return loading();
   }
@@ -553,6 +565,7 @@ class _$_LoadingCoffeeListState implements _LoadingCoffeeListState {
     TResult? Function()? loading,
     TResult? Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
         loaded,
+    TResult? Function(String error)? error,
   }) {
     return loading?.call();
   }
@@ -564,6 +577,7 @@ class _$_LoadingCoffeeListState implements _LoadingCoffeeListState {
     TResult Function()? loading,
     TResult Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
         loaded,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -575,9 +589,10 @@ class _$_LoadingCoffeeListState implements _LoadingCoffeeListState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_EmptyCoffeeListState value) empty,
-    required TResult Function(_LoadingCoffeeListState value) loading,
-    required TResult Function(_LoadedCoffeeListState value) loaded,
+    required TResult Function(EmptyCoffeeListState value) empty,
+    required TResult Function(LoadingCoffeeListState value) loading,
+    required TResult Function(LoadedCoffeeListState value) loaded,
+    required TResult Function(ErrorCoffeeListState value) error,
   }) {
     return loading(this);
   }
@@ -585,9 +600,10 @@ class _$_LoadingCoffeeListState implements _LoadingCoffeeListState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_EmptyCoffeeListState value)? empty,
-    TResult? Function(_LoadingCoffeeListState value)? loading,
-    TResult? Function(_LoadedCoffeeListState value)? loaded,
+    TResult? Function(EmptyCoffeeListState value)? empty,
+    TResult? Function(LoadingCoffeeListState value)? loading,
+    TResult? Function(LoadedCoffeeListState value)? loaded,
+    TResult? Function(ErrorCoffeeListState value)? error,
   }) {
     return loading?.call(this);
   }
@@ -595,9 +611,10 @@ class _$_LoadingCoffeeListState implements _LoadingCoffeeListState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_EmptyCoffeeListState value)? empty,
-    TResult Function(_LoadingCoffeeListState value)? loading,
-    TResult Function(_LoadedCoffeeListState value)? loaded,
+    TResult Function(EmptyCoffeeListState value)? empty,
+    TResult Function(LoadingCoffeeListState value)? loading,
+    TResult Function(LoadedCoffeeListState value)? loaded,
+    TResult Function(ErrorCoffeeListState value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -607,25 +624,25 @@ class _$_LoadingCoffeeListState implements _LoadingCoffeeListState {
   }
 }
 
-abstract class _LoadingCoffeeListState implements CoffeeListState {
-  const factory _LoadingCoffeeListState() = _$_LoadingCoffeeListState;
+abstract class LoadingCoffeeListState implements CoffeeListState {
+  const factory LoadingCoffeeListState() = _$LoadingCoffeeListState;
 }
 
 /// @nodoc
-abstract class _$$_LoadedCoffeeListStateCopyWith<$Res> {
-  factory _$$_LoadedCoffeeListStateCopyWith(_$_LoadedCoffeeListState value,
-          $Res Function(_$_LoadedCoffeeListState) then) =
-      __$$_LoadedCoffeeListStateCopyWithImpl<$Res>;
+abstract class _$$LoadedCoffeeListStateCopyWith<$Res> {
+  factory _$$LoadedCoffeeListStateCopyWith(_$LoadedCoffeeListState value,
+          $Res Function(_$LoadedCoffeeListState) then) =
+      __$$LoadedCoffeeListStateCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Coffee> coffees, List<Coffee> filteredCoffees});
 }
 
 /// @nodoc
-class __$$_LoadedCoffeeListStateCopyWithImpl<$Res>
-    extends _$CoffeeListStateCopyWithImpl<$Res, _$_LoadedCoffeeListState>
-    implements _$$_LoadedCoffeeListStateCopyWith<$Res> {
-  __$$_LoadedCoffeeListStateCopyWithImpl(_$_LoadedCoffeeListState _value,
-      $Res Function(_$_LoadedCoffeeListState) _then)
+class __$$LoadedCoffeeListStateCopyWithImpl<$Res>
+    extends _$CoffeeListStateCopyWithImpl<$Res, _$LoadedCoffeeListState>
+    implements _$$LoadedCoffeeListStateCopyWith<$Res> {
+  __$$LoadedCoffeeListStateCopyWithImpl(_$LoadedCoffeeListState _value,
+      $Res Function(_$LoadedCoffeeListState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -634,7 +651,7 @@ class __$$_LoadedCoffeeListStateCopyWithImpl<$Res>
     Object? coffees = null,
     Object? filteredCoffees = null,
   }) {
-    return _then(_$_LoadedCoffeeListState(
+    return _then(_$LoadedCoffeeListState(
       null == coffees
           ? _value.coffees
           : coffees // ignore: cast_nullable_to_non_nullable
@@ -649,8 +666,8 @@ class __$$_LoadedCoffeeListStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadedCoffeeListState implements _LoadedCoffeeListState {
-  const _$_LoadedCoffeeListState(this.coffees, this.filteredCoffees);
+class _$LoadedCoffeeListState implements LoadedCoffeeListState {
+  const _$LoadedCoffeeListState(this.coffees, this.filteredCoffees);
 
   @override
   final List<Coffee> coffees;
@@ -666,7 +683,7 @@ class _$_LoadedCoffeeListState implements _LoadedCoffeeListState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoadedCoffeeListState &&
+            other is _$LoadedCoffeeListState &&
             const DeepCollectionEquality().equals(other.coffees, coffees) &&
             const DeepCollectionEquality()
                 .equals(other.filteredCoffees, filteredCoffees));
@@ -681,8 +698,8 @@ class _$_LoadedCoffeeListState implements _LoadedCoffeeListState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadedCoffeeListStateCopyWith<_$_LoadedCoffeeListState> get copyWith =>
-      __$$_LoadedCoffeeListStateCopyWithImpl<_$_LoadedCoffeeListState>(
+  _$$LoadedCoffeeListStateCopyWith<_$LoadedCoffeeListState> get copyWith =>
+      __$$LoadedCoffeeListStateCopyWithImpl<_$LoadedCoffeeListState>(
           this, _$identity);
 
   @override
@@ -693,6 +710,7 @@ class _$_LoadedCoffeeListState implements _LoadedCoffeeListState {
     required TResult Function(
             List<Coffee> coffees, List<Coffee> filteredCoffees)
         loaded,
+    required TResult Function(String error) error,
   }) {
     return loaded(coffees, filteredCoffees);
   }
@@ -704,6 +722,7 @@ class _$_LoadedCoffeeListState implements _LoadedCoffeeListState {
     TResult? Function()? loading,
     TResult? Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
         loaded,
+    TResult? Function(String error)? error,
   }) {
     return loaded?.call(coffees, filteredCoffees);
   }
@@ -715,6 +734,7 @@ class _$_LoadedCoffeeListState implements _LoadedCoffeeListState {
     TResult Function()? loading,
     TResult Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
         loaded,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -726,9 +746,10 @@ class _$_LoadedCoffeeListState implements _LoadedCoffeeListState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_EmptyCoffeeListState value) empty,
-    required TResult Function(_LoadingCoffeeListState value) loading,
-    required TResult Function(_LoadedCoffeeListState value) loaded,
+    required TResult Function(EmptyCoffeeListState value) empty,
+    required TResult Function(LoadingCoffeeListState value) loading,
+    required TResult Function(LoadedCoffeeListState value) loaded,
+    required TResult Function(ErrorCoffeeListState value) error,
   }) {
     return loaded(this);
   }
@@ -736,9 +757,10 @@ class _$_LoadedCoffeeListState implements _LoadedCoffeeListState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_EmptyCoffeeListState value)? empty,
-    TResult? Function(_LoadingCoffeeListState value)? loading,
-    TResult? Function(_LoadedCoffeeListState value)? loaded,
+    TResult? Function(EmptyCoffeeListState value)? empty,
+    TResult? Function(LoadingCoffeeListState value)? loading,
+    TResult? Function(LoadedCoffeeListState value)? loaded,
+    TResult? Function(ErrorCoffeeListState value)? error,
   }) {
     return loaded?.call(this);
   }
@@ -746,9 +768,10 @@ class _$_LoadedCoffeeListState implements _LoadedCoffeeListState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_EmptyCoffeeListState value)? empty,
-    TResult Function(_LoadingCoffeeListState value)? loading,
-    TResult Function(_LoadedCoffeeListState value)? loaded,
+    TResult Function(EmptyCoffeeListState value)? empty,
+    TResult Function(LoadingCoffeeListState value)? loading,
+    TResult Function(LoadedCoffeeListState value)? loaded,
+    TResult Function(ErrorCoffeeListState value)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -758,14 +781,165 @@ class _$_LoadedCoffeeListState implements _LoadedCoffeeListState {
   }
 }
 
-abstract class _LoadedCoffeeListState implements CoffeeListState {
-  const factory _LoadedCoffeeListState(
+abstract class LoadedCoffeeListState implements CoffeeListState {
+  const factory LoadedCoffeeListState(
           final List<Coffee> coffees, final List<Coffee> filteredCoffees) =
-      _$_LoadedCoffeeListState;
+      _$LoadedCoffeeListState;
 
   List<Coffee> get coffees;
   List<Coffee> get filteredCoffees;
   @JsonKey(ignore: true)
-  _$$_LoadedCoffeeListStateCopyWith<_$_LoadedCoffeeListState> get copyWith =>
+  _$$LoadedCoffeeListStateCopyWith<_$LoadedCoffeeListState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ErrorCoffeeListStateCopyWith<$Res> {
+  factory _$$ErrorCoffeeListStateCopyWith(_$ErrorCoffeeListState value,
+          $Res Function(_$ErrorCoffeeListState) then) =
+      __$$ErrorCoffeeListStateCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String error});
+}
+
+/// @nodoc
+class __$$ErrorCoffeeListStateCopyWithImpl<$Res>
+    extends _$CoffeeListStateCopyWithImpl<$Res, _$ErrorCoffeeListState>
+    implements _$$ErrorCoffeeListStateCopyWith<$Res> {
+  __$$ErrorCoffeeListStateCopyWithImpl(_$ErrorCoffeeListState _value,
+      $Res Function(_$ErrorCoffeeListState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(_$ErrorCoffeeListState(
+      null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ErrorCoffeeListState implements ErrorCoffeeListState {
+  const _$ErrorCoffeeListState(this.error);
+
+  @override
+  final String error;
+
+  @override
+  String toString() {
+    return 'CoffeeListState.error(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorCoffeeListState &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorCoffeeListStateCopyWith<_$ErrorCoffeeListState> get copyWith =>
+      __$$ErrorCoffeeListStateCopyWithImpl<_$ErrorCoffeeListState>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function() loading,
+    required TResult Function(
+            List<Coffee> coffees, List<Coffee> filteredCoffees)
+        loaded,
+    required TResult Function(String error) error,
+  }) {
+    return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? empty,
+    TResult? Function()? loading,
+    TResult? Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
+        loaded,
+    TResult? Function(String error)? error,
+  }) {
+    return error?.call(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function()? loading,
+    TResult Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
+        loaded,
+    TResult Function(String error)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EmptyCoffeeListState value) empty,
+    required TResult Function(LoadingCoffeeListState value) loading,
+    required TResult Function(LoadedCoffeeListState value) loaded,
+    required TResult Function(ErrorCoffeeListState value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EmptyCoffeeListState value)? empty,
+    TResult? Function(LoadingCoffeeListState value)? loading,
+    TResult? Function(LoadedCoffeeListState value)? loaded,
+    TResult? Function(ErrorCoffeeListState value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmptyCoffeeListState value)? empty,
+    TResult Function(LoadingCoffeeListState value)? loading,
+    TResult Function(LoadedCoffeeListState value)? loaded,
+    TResult Function(ErrorCoffeeListState value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ErrorCoffeeListState implements CoffeeListState {
+  const factory ErrorCoffeeListState(final String error) =
+      _$ErrorCoffeeListState;
+
+  String get error;
+  @JsonKey(ignore: true)
+  _$$ErrorCoffeeListStateCopyWith<_$ErrorCoffeeListState> get copyWith =>
       throw _privateConstructorUsedError;
 }
