@@ -35,7 +35,7 @@ class CoffeeCartItemDescriptionWidget extends StatelessWidget {
                 coffeeItemOrder.coffee.image,
                 width: 72,
                 height: 72,
-                fit: BoxFit.fill,
+                fit: BoxFit.fitHeight,
               ),
             ),
             const SizedBox(width: 12),

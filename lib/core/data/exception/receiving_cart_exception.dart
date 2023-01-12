@@ -1,8 +1,6 @@
+import 'package:learning/core/data/exception/receiving_exception.dart';
 import 'package:learning/core/domain/entity/coffee_item_order.dart';
 
-class ReceivingCartException extends Error {
-  final List<CoffeeItemOrder> items;
-  final String message;
-
-  ReceivingCartException(this.items, this.message);
+class ReceivingCartException extends ReceivingException<CoffeeItemOrder> {
+  ReceivingCartException(super.items, super.message);
 }

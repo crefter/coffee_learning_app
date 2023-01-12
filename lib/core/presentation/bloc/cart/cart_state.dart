@@ -21,7 +21,7 @@ class CartState with _$CartState {
             ? 0
             : list.map<double>((e) => e.coffee.price * e.count).toList().reduce(
                   (value, element) => value + element,
-                ),
+                ) + deliveryCharges + taxes,
       );
 
   double get taxes => maybeWhen<double>(

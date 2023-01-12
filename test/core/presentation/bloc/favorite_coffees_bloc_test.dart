@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:learning/core/data/exception/receiving_favorites_exception.dart';
 import 'package:learning/core/domain/entity/coffee.dart';
 import 'package:learning/core/domain/repository/coffee_repository.dart';
 import 'package:learning/core/presentation/bloc/favorite_coffees/favorite_coffees_bloc.dart';
@@ -38,8 +39,9 @@ void main() {
     });
     test('should return [empty, loading, error] when add event with errors',
         () async {
-      when(coffeeRepository.getFavorites())
-          .thenAnswer((_) async => throw Error());
+      when(coffeeRepository.getFavorites()).thenAnswer(
+        (_) async => throw ReceivingFavoritesException([], 'message'),
+      );
       final states = <FavoriteCoffeesState>[];
       states.add(bloc.state);
       bloc.stream.listen((state) => states.add(state));
@@ -76,8 +78,12 @@ void main() {
     test(
         'should return [empty, loading, error, empty] '
         'when update event after add with error', () async {
-      when(coffeeRepository.getFavorites())
-          .thenAnswer((_) async => throw Error());
+      when(coffeeRepository.getFavorites()).thenAnswer(
+        (_) async => throw ReceivingFavoritesException(
+          [],
+          'message',
+        ),
+      );
       final states = <FavoriteCoffeesState>[];
       states.add(bloc.state);
       bloc.stream.listen((state) => states.add(state));

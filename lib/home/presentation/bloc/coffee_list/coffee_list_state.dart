@@ -11,5 +11,9 @@ class CoffeeListState with _$CoffeeListState {
     List<Coffee> filteredCoffees,
   ) = LoadedCoffeeListState;
 
-  const factory CoffeeListState.error(String error) = ErrorCoffeeListState;
+  const factory CoffeeListState.error(
+    List<Coffee> coffees,
+    List<Coffee> filteredCoffees,
+    String error,
+  ) = ErrorCoffeeListState;
 }

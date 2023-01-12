@@ -10,7 +10,7 @@ class CartRemoteDatasource implements RemoteDatasource<CoffeeItemOrder> {
   Future<List<CoffeeItemOrder>> get() async {
     Random rand = Random();
     int num = rand.nextInt(1000);
-    if (num < 500) {
+    if (num < 800) {
       await Future.delayed(const Duration(seconds: 2));
       return const [
         CoffeeItemOrder(

@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:learning/core/data/datasource/local/local_datasource.dart';
 import 'package:learning/core/domain/entity/coffee_item_order.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -25,6 +24,7 @@ class CartLocalDatasource implements LocalDatasource<CoffeeItemOrder> {
   @override
   Future<void> save(List<CoffeeItemOrder> data) async {
     if (data.isEmpty) {
+      _sharedPreferences.setString(cart, '');
       return;
     }
     final listJson = data.map((e) => e.toJson()).toList();

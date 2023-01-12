@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:learning/core/data/exception/receiving_all_coffee_exception.dart';
 import 'package:learning/core/domain/entity/coffee.dart';
 import 'package:learning/core/domain/repository/coffee_repository.dart';
 
@@ -23,21 +24,27 @@ class CoffeeListBloc extends Bloc<CoffeeListEvent, CoffeeListState> {
     });
   }
 
-  Future<void> _startLoading(_StartLoadingCoffeeListEvent event,
-      Emitter<CoffeeListState> emit,) async {
+  Future<void> _startLoading(
+    _StartLoadingCoffeeListEvent event,
+    Emitter<CoffeeListState> emit,
+  ) async {
     emit(const CoffeeListState.loading());
     try {
       final List<Coffee> coffees = await coffeeRepository.getAll();
       final List<Coffee> filteredCoffees =
-      coffees.where((coffee) => coffee.type.index == 0).toList();
+          coffees.where((coffee) => coffee.type.index == 0).toList();
       emit(CoffeeListState.loaded(coffees, filteredCoffees));
-    } catch (error) {
-      emit(CoffeeListState.error(error.toString()));
+    } on ReceivingAllCoffeeException catch (e) {
+      final List<Coffee> filteredCoffees =
+          e.items.where((coffee) => coffee.type.index == 0).toList();
+      emit(CoffeeListState.error(e.items, filteredCoffees, e.message));
     }
   }
 
-  Future<void> _typeSelected(_TypeSelectedCoffeeListEvent event,
-      Emitter<CoffeeListState> emit,) async {
+  Future<void> _typeSelected(
+    _TypeSelectedCoffeeListEvent event,
+    Emitter<CoffeeListState> emit,
+  ) async {
     final List<Coffee> coffees = state.maybeWhen(
         orElse: () => <Coffee>[], loaded: (coffees, _) => coffees);
     emit(

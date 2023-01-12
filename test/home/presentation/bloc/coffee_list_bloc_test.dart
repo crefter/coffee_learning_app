@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:learning/core/data/exception/receiving_all_coffee_exception.dart';
 import 'package:learning/core/domain/entity/coffee.dart';
 import 'package:learning/core/domain/repository/coffee_repository.dart';
 import 'package:learning/home/presentation/bloc/coffee_list/coffee_list_bloc.dart';
@@ -39,7 +40,9 @@ void main() {
     test(
         'should return [empty, loading, error] '
         'when startLoading event with errors', () async {
-      when(coffeeRepository.getAll()).thenAnswer((_) async => throw Error());
+      when(coffeeRepository.getAll()).thenAnswer(
+        (_) async => throw ReceivingAllCoffeeException([], 'message'),
+      );
       final states = <CoffeeListState>[];
       states.add(bloc.state);
       bloc.stream.listen((state) => states.add(state));
@@ -77,7 +80,9 @@ void main() {
         'should return [empty, loading, error, loaded] '
         'when startLoading event with errors then typeSelected event',
         () async {
-      when(coffeeRepository.getAll()).thenAnswer((_) async => throw Error());
+      when(coffeeRepository.getAll()).thenAnswer(
+        (_) async => throw ReceivingAllCoffeeException([], 'message'),
+      );
       final states = <CoffeeListState>[];
       states.add(bloc.state);
       bloc.stream.listen((state) => states.add(state));

@@ -2,7 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learning/core/data/datasource/local/cart_local_datasource.dart';
+import 'package:learning/core/data/datasource/local/favorites_local_datasource.dart';
 import 'package:learning/core/data/datasource/remote/cart_remote_datasource.dart';
+import 'package:learning/core/data/datasource/remote/coffee_remote_datasource.dart';
+import 'package:learning/core/data/datasource/remote/favorites_remote_datasource.dart';
 import 'package:learning/core/data/repository/coffee_repositoty_impl.dart';
 import 'package:learning/core/presentation/bloc/cart/cart_bloc.dart';
 import 'package:learning/core/data/repository/cart_repository_impl.dart';
@@ -20,8 +23,6 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  final CoffeeRepository _coffeeRepository = MockCoffeeRepository();
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -30,16 +31,21 @@ class _MainPageState extends State<MainPage> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           final sharedPreferences = snapshot.data!;
+          final CoffeeRepository coffeeRepository = CoffeeRepositoryImpl(
+            CoffeeRemoteDatasource(),
+            FavoritesRemoteDatasource(),
+            FavoritesLocalDatasource(sharedPreferences),
+          );
           return MultiBlocProvider(
             providers: [
               BlocProvider(
                 create: (_) => CoffeeListBloc(
-                  coffeeRepository: _coffeeRepository,
+                  coffeeRepository: coffeeRepository,
                 )..add(const CoffeeListEvent.startLoading()),
               ),
               BlocProvider(
                 create: (_) => FavoriteCoffeesBloc(
-                  coffeeRepository: _coffeeRepository,
+                  coffeeRepository: coffeeRepository,
                 ),
               ),
               BlocProvider(
@@ -53,19 +59,37 @@ class _MainPageState extends State<MainPage> {
               ),
             ],
             child: SafeArea(
-              child: BlocListener<CartBloc, CartState>(
-                listener: (context, state) {
-                  state.maybeWhen(
-                    orElse: () {},
-                    error: (_, message) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(message),
-                        ),
+              child: MultiBlocListener(
+                listeners: [
+                  BlocListener<CartBloc, CartState>(
+                    listener: (context, state) {
+                      state.maybeWhen(
+                        orElse: () {},
+                        error: (_, message) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(message),
+                            ),
+                          );
+                        },
                       );
                     },
-                  );
-                },
+                  ),
+                  BlocListener<CoffeeListBloc, CoffeeListState>(
+                    listener: (context, state) {
+                      state.maybeWhen(
+                        orElse: () {},
+                        error: (_, __, message) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(message),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
+                ],
                 child: AutoTabsScaffold(
                   routes: const [
                     HomeEmptyRoute(),

@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:bloc/bloc.dart';
+import 'package:learning/core/data/exception/receiving_favorites_exception.dart';
 import 'package:learning/core/domain/entity/coffee.dart';
 import 'package:learning/core/domain/repository/coffee_repository.dart';
 
@@ -32,8 +33,9 @@ class FavoriteCoffeesBloc
             final List<Coffee> favorites =
                 await coffeeRepository.getFavorites();
             emit(FavoriteCoffeesState.loaded(favorites));
-          } catch (error) {
-            emit(FavoriteCoffeesState.error([], error.toString()));
+            await coffeeRepository.saveFavorites(favorites);
+          } on ReceivingFavoritesException catch (e) {
+            emit(FavoriteCoffeesState.error(e.items, e.message));
           }
         },
         orElse: () async {});
@@ -53,6 +55,7 @@ class FavoriteCoffeesBloc
             ? newFavorites.remove(coffee)
             : newFavorites.add(coffee);
         emit(FavoriteCoffeesState.loaded(newFavorites));
+        await coffeeRepository.saveFavorites(newFavorites);
       },
     );
   }
