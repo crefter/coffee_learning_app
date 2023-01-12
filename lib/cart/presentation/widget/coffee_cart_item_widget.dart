@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:learning/cart/presentation/widget/cart_widget.dart';
 import 'package:learning/core/presentation/bloc/cart/cart_bloc.dart';
 import 'package:learning/cart/presentation/widget/coffee_cart_item_description_widget.dart';
 import 'package:learning/core/domain/entity/coffee_item_order.dart';
@@ -77,14 +76,6 @@ class _CoffeeCartItemWidgetState extends State<CoffeeCartItemWidget>
                           CartEvent.delete(widget.index),
                         ),
                   );
-                  if (mounted) {
-                   animatedGlobalKey.currentState?.removeItem(
-                      widget.index,
-                      (context, animation) => SizeTransition(
-                        sizeFactor: animation,
-                      ),
-                    );
-                  }
                 },
               ),
             ),

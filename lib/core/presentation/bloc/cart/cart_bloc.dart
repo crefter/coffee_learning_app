@@ -45,6 +45,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       items.add(event.item);
     }
     emit(CartState.loaded(items));
+    await cartRepository.save(items);
   }
 
   Future<void> _onDelete(
@@ -66,13 +67,19 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     } else {
       emit(CartState.loaded(items));
     }
+    await cartRepository.save(items);
   }
 
   Future<void> _onLoad(_CartEventLoad event, Emitter<CartState> emit) async {
     emit(const CartState.loading());
     try {
       final List<CoffeeItemOrder> items = await cartRepository.get();
-      emit(CartState.loaded(items));
+      if (items.isEmpty) {
+        emit(const CartState.empty());
+      } else {
+        emit(CartState.loaded(items));
+        await cartRepository.save(items);
+      }
     } catch (error) {
       state.maybeWhen(
         orElse: () => emit(CartState.error([], error.toString())),
@@ -94,6 +101,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     );
 
     emit(CartState.loaded(items));
+    await cartRepository.save(items);
   }
 
   Future<void> _onMinus(_CartEventMinus event, Emitter<CartState> emit) async {
@@ -109,6 +117,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         count: items[event.index].count - 1,
       );
       emit(CartState.loaded(items));
+      await cartRepository.save(items);
     } else {
       add(CartEvent.delete(event.index));
     }
