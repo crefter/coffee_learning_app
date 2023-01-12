@@ -13,7 +13,7 @@ class CartLocalDatasource implements LocalDatasource<CoffeeItemOrder> {
   Future<List<CoffeeItemOrder>> get() async {
     final itemsJson = _sharedPreferences.getString(cart) ?? '';
     if (itemsJson.isEmpty) {
-      return [];
+      return <CoffeeItemOrder>[];
     }
     final map = jsonDecode(itemsJson);
     final List<CoffeeItemOrder> items =
@@ -24,7 +24,7 @@ class CartLocalDatasource implements LocalDatasource<CoffeeItemOrder> {
   @override
   Future<void> save(List<CoffeeItemOrder> data) async {
     if (data.isEmpty) {
-      _sharedPreferences.setString(cart, '');
+      await _sharedPreferences.setString(cart, '');
       return;
     }
     final listJson = data.map((e) => e.toJson()).toList();

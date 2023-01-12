@@ -16,7 +16,7 @@ class CartState with _$CartState {
   ) = CartStateError;
 
   double get totalPrice => maybeWhen<double>(
-        orElse: () => 0,
+        orElse: () => deliveryCharges,
         loaded: (list) => list.isEmpty
             ? 0
             : list.map<double>((e) => e.coffee.price * e.count).toList().reduce(
