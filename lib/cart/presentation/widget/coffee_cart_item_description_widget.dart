@@ -29,11 +29,14 @@ class CoffeeCartItemDescriptionWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(width: 12),
-            Image.network(
-              coffeeItemOrder.coffee.image,
-              width: 72,
-              height: 72,
-              fit: BoxFit.fill,
+            ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: Image.network(
+                coffeeItemOrder.coffee.image,
+                width: 72,
+                height: 72,
+                fit: BoxFit.fill,
+              ),
             ),
             const SizedBox(width: 12),
             Column(
@@ -88,9 +91,7 @@ class CoffeeCartItemDescriptionWidget extends StatelessWidget {
                     width: 30,
                     child: StylizedIconButton(
                       onTap: () {
-                        context
-                            .read<CartBloc>()
-                            .add(CartEvent.plus(index));
+                        context.read<CartBloc>().add(CartEvent.plus(index));
                       },
                       icon: const Icon(
                         Icons.add,
