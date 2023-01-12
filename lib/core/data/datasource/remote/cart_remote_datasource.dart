@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:learning/core/data/datasource/remote/remote_datasource.dart';
+import 'package:learning/core/data/exception/receiving_cart_exception.dart';
 import 'package:learning/core/domain/entity/coffee.dart';
 import 'package:learning/core/domain/entity/coffee_item_order.dart';
 
@@ -9,7 +10,7 @@ class CartRemoteDatasource implements RemoteDatasource<CoffeeItemOrder> {
   Future<List<CoffeeItemOrder>> get() async {
     Random rand = Random();
     int num = rand.nextInt(1000);
-    if (num < 50) {
+    if (num < 500) {
       await Future.delayed(const Duration(seconds: 2));
       return const [
         CoffeeItemOrder(
@@ -26,7 +27,7 @@ class CartRemoteDatasource implements RemoteDatasource<CoffeeItemOrder> {
         )
       ];
     } else {
-      return [];
+      throw ReceivingCartException([], 'Ошибка получения корзины с сервера!');
     }
   }
 }

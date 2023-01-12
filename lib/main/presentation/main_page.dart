@@ -28,7 +28,7 @@ class _MainPageState extends State<MainPage> {
     return FutureBuilder(
       future: SharedPreferences.getInstance(),
       builder: (context, snapshot) {
-        if(snapshot.hasData) {
+        if (snapshot.hasData) {
           final sharedPreferences = snapshot.data!;
           return MultiBlocProvider(
             providers: [
@@ -53,72 +53,89 @@ class _MainPageState extends State<MainPage> {
               ),
             ],
             child: SafeArea(
-              child: AutoTabsScaffold(
-                routes: const [
-                  HomeEmptyRoute(),
-                  CartRoute(),
-                  FavoritesRoute(),
-                  NotificationsRoute(),
-                ],
-                bottomNavigationBuilder: (_, tabsRouter) {
-                  return BottomNavigationBar(
-                    showSelectedLabels: false,
-                    showUnselectedLabels: false,
-                    type: BottomNavigationBarType.fixed,
-                    currentIndex: tabsRouter.activeIndex,
-                    //backgroundColor: theme.colorScheme.surface,
-                    onTap: tabsRouter.setActiveIndex,
-                    selectedIconTheme: theme.iconTheme.copyWith(
-                      color: theme.iconTheme
-                          .copyWith(color: const Color.fromARGB(255, 239, 227, 200))
-                          .color,
-                      shadows: [
-                        Shadow(
-                            color: theme.iconTheme
-                                .copyWith(
-                                color: const Color.fromARGB(38, 239, 227, 200))
-                                .color!,
-                            blurRadius: 20)
-                      ],
-                    ),
-                    unselectedIconTheme: theme.iconTheme.copyWith(
-                      color: theme.iconTheme
-                          .copyWith(color: const Color.fromARGB(255, 239, 227, 200))
-                          .color!
-                          .withOpacity(0.4),
-                    ),
-                    items: const [
-                      BottomNavigationBarItem(
-                        label: 'Home',
-                        icon: Icon(
-                          Icons.home_filled,
-                          size: 26,
+              child: BlocListener<CartBloc, CartState>(
+                listener: (context, state) {
+                  state.maybeWhen(
+                    orElse: () {},
+                    error: (_, message) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(message),
                         ),
-                      ),
-                      BottomNavigationBarItem(
-                        label: 'Cart',
-                        icon: Icon(
-                          Icons.shopping_cart_rounded,
-                          size: 26,
-                        ),
-                      ),
-                      BottomNavigationBarItem(
-                        label: 'Favorite',
-                        icon: Icon(
-                          Icons.favorite,
-                          size: 26,
-                        ),
-                      ),
-                      BottomNavigationBarItem(
-                        label: 'Notifications',
-                        icon: Icon(
-                          Icons.notifications,
-                          size: 26,
-                        ),
-                      ),
-                    ],
+                      );
+                    },
                   );
                 },
+                child: AutoTabsScaffold(
+                  routes: const [
+                    HomeEmptyRoute(),
+                    CartRoute(),
+                    FavoritesRoute(),
+                    NotificationsRoute(),
+                  ],
+                  bottomNavigationBuilder: (_, tabsRouter) {
+                    return BottomNavigationBar(
+                      showSelectedLabels: false,
+                      showUnselectedLabels: false,
+                      type: BottomNavigationBarType.fixed,
+                      currentIndex: tabsRouter.activeIndex,
+                      //backgroundColor: theme.colorScheme.surface,
+                      onTap: tabsRouter.setActiveIndex,
+                      selectedIconTheme: theme.iconTheme.copyWith(
+                        color: theme.iconTheme
+                            .copyWith(
+                                color: const Color.fromARGB(255, 239, 227, 200))
+                            .color,
+                        shadows: [
+                          Shadow(
+                              color: theme.iconTheme
+                                  .copyWith(
+                                      color: const Color.fromARGB(
+                                          38, 239, 227, 200))
+                                  .color!,
+                              blurRadius: 20)
+                        ],
+                      ),
+                      unselectedIconTheme: theme.iconTheme.copyWith(
+                        color: theme.iconTheme
+                            .copyWith(
+                                color: const Color.fromARGB(255, 239, 227, 200))
+                            .color!
+                            .withOpacity(0.4),
+                      ),
+                      items: const [
+                        BottomNavigationBarItem(
+                          label: 'Home',
+                          icon: Icon(
+                            Icons.home_filled,
+                            size: 26,
+                          ),
+                        ),
+                        BottomNavigationBarItem(
+                          label: 'Cart',
+                          icon: Icon(
+                            Icons.shopping_cart_rounded,
+                            size: 26,
+                          ),
+                        ),
+                        BottomNavigationBarItem(
+                          label: 'Favorite',
+                          icon: Icon(
+                            Icons.favorite,
+                            size: 26,
+                          ),
+                        ),
+                        BottomNavigationBarItem(
+                          label: 'Notifications',
+                          icon: Icon(
+                            Icons.notifications,
+                            size: 26,
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                ),
               ),
             ),
           );

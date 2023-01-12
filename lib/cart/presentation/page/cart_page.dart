@@ -25,7 +25,7 @@ class CartPage extends StatelessWidget {
                   style: theme.textTheme.titleMedium,
                 ),
                 const SizedBox(height: 20),
-                CartWidget(),
+                const CartWidget(),
                 DottedBorder(
                   padding: EdgeInsets.zero,
                   dashPattern: const [10, 5],

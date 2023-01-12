@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:learning/core/data/exception/receiving_cart_exception.dart';
 import 'package:learning/core/domain/entity/coffee.dart';
 import 'package:learning/core/domain/entity/coffee_item_order.dart';
 import 'package:learning/core/domain/repository/cart_repository.dart';
@@ -56,7 +57,9 @@ void main() {
     test(
         'should return [empty, loading, error] '
         'when load event with errors', () async {
-      when(mockRepository.get()).thenAnswer((_) async => throw Error());
+      when(mockRepository.get()).thenAnswer(
+        (_) async => throw ReceivingCartException([], 'message'),
+      );
       final states = <CartState>[];
       expect(cartBloc.state, empty);
       cartBloc.add(const CartEvent.load());

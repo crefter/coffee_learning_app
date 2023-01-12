@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:learning/core/data/exception/receiving_cart_exception.dart';
 import 'package:learning/core/domain/entity/coffee_item_order.dart';
 import 'package:learning/core/domain/repository/cart_repository.dart';
 
@@ -80,10 +81,8 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         emit(CartState.loaded(items));
         await cartRepository.save(items);
       }
-    } catch (error) {
-      state.maybeWhen(
-        orElse: () => emit(CartState.error([], error.toString())),
-      );
+    } on ReceivingCartException catch (e) {
+       emit(CartState.error(e.items, e.message));
     }
   }
 

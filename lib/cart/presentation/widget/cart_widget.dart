@@ -33,8 +33,17 @@ class CartWidget extends StatelessWidget {
               );
             },
           ),
-          error: (_, message) => Center(
-            child: Text(message),
+          error: (items, _) => ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: items.length,
+            key: animatedGlobalKey,
+            itemBuilder: (context, index) {
+              return CoffeeCartItemWidget(
+                index: index,
+                coffeeItemOrder: items[index],
+              );
+            },
           ),
         );
       },
