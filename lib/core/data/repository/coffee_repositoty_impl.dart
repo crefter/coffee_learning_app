@@ -31,7 +31,7 @@ class CoffeeRepositoryImpl implements CoffeeRepository {
     try {
       final data = await favoritesRemoteDatasource.get();
       return data;
-    } on ReceivingAllCoffeeException catch (e) {
+    } on ReceivingFavoritesException catch (e) {
       final data = await favoritesLocalDatasource.get();
       throw ReceivingFavoritesException(data, e.message);
     }
