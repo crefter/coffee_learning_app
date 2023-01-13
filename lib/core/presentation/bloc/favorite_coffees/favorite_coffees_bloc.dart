@@ -47,6 +47,12 @@ class FavoriteCoffeesBloc
       orElse: () async {
         emit(const FavoriteCoffeesState.empty());
       },
+      empty: () async {
+        emit(const FavoriteCoffeesState.loading());
+        final favorites = [event.coffee];
+        emit(FavoriteCoffeesState.loaded(favorites));
+        await coffeeRepository.saveFavorites(favorites);
+      },
       loaded: (favorites) async {
         emit(const FavoriteCoffeesState.loading());
         final newFavorites = List.of(favorites);
@@ -54,7 +60,12 @@ class FavoriteCoffeesBloc
         newFavorites.contains(coffee)
             ? newFavorites.remove(coffee)
             : newFavorites.add(coffee);
-        emit(FavoriteCoffeesState.loaded(newFavorites));
+        if (newFavorites.isEmpty) {
+          emit(const FavoriteCoffeesState.empty());
+        }
+        else {
+          emit(FavoriteCoffeesState.loaded(newFavorites));
+        }
         await coffeeRepository.saveFavorites(newFavorites);
       },
     );

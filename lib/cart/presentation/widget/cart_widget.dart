@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:learning/cart/presentation/widget/coffee_cart_item_description_widget.dart';
+import 'package:learning/core/domain/entity/coffee_item_order.dart';
 import 'package:learning/core/presentation/bloc/cart/cart_bloc.dart';
-import 'package:learning/cart/presentation/widget/coffee_cart_item_widget.dart';
+import 'package:learning/core/presentation/widget/item_widget.dart';
 
 final animatedGlobalKey = GlobalKey<AnimatedListState>();
 
@@ -27,9 +29,18 @@ class CartWidget extends StatelessWidget {
             itemCount: items.length,
             key: animatedGlobalKey,
             itemBuilder: (context, index) {
-              return CoffeeCartItemWidget(
-                index: index,
-                coffeeItemOrder: items[index],
+              return ItemWidget<CoffeeItemOrder>(
+                onTapDeleteWidget: () async {
+                  await Future.sync(
+                    () => context.read<CartBloc>().add(
+                          CartEvent.delete(index),
+                        ),
+                  );
+                },
+                itemChild: CoffeeCartItemDescriptionWidget(
+                  index: index,
+                  coffeeItemOrder: items[index],
+                ),
               );
             },
           ),
@@ -39,9 +50,18 @@ class CartWidget extends StatelessWidget {
             itemCount: items.length,
             key: animatedGlobalKey,
             itemBuilder: (context, index) {
-              return CoffeeCartItemWidget(
-                index: index,
-                coffeeItemOrder: items[index],
+              return ItemWidget<CoffeeItemOrder>(
+                onTapDeleteWidget: () async {
+                  await Future.sync(
+                        () => context.read<CartBloc>().add(
+                      CartEvent.delete(index),
+                    ),
+                  );
+                },
+                itemChild: CoffeeCartItemDescriptionWidget(
+                  index: index,
+                  coffeeItemOrder: items[index],
+                ),
               );
             },
           ),

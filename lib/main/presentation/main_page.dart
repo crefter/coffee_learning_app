@@ -46,7 +46,7 @@ class _MainPageState extends State<MainPage> {
               BlocProvider(
                 create: (_) => FavoriteCoffeesBloc(
                   coffeeRepository: coffeeRepository,
-                ),
+                )..add(const FavoriteCoffeesEvent.load()),
               ),
               BlocProvider(
                 create: (_) => CartBloc(

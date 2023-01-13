@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learning/core/domain/entity/coffee.dart';
 import 'package:learning/core/domain/entity/coffee_item_order.dart';
+import 'package:learning/core/presentation/bloc/cart/cart_bloc.dart';
 import 'package:learning/core/presentation/bloc/favorite_coffees/favorite_coffees_bloc.dart';
 import 'package:learning/core/presentation/widget/stylized_text_button.dart';
 
@@ -25,9 +26,6 @@ class _CoffeeDetailsPageState extends State<CoffeeDetailsPage> {
 
   @override
   void didChangeDependencies() {
-    context.read<FavoriteCoffeesBloc>().add(
-          const FavoriteCoffeesEvent.load(),
-        );
     super.didChangeDependencies();
   }
 
@@ -114,7 +112,9 @@ class _CoffeeDetailsPageState extends State<CoffeeDetailsPage> {
                           orElse: () => IconButton(
                             iconSize: 28,
                             splashRadius: 20,
-                            onPressed: () {},
+                            onPressed: () {
+                              widget.onFavoriteClick();
+                            },
                             icon: const Icon(Icons.favorite),
                             color: theme.iconTheme
                                 .copyWith(color: Colors.grey)
@@ -267,7 +267,16 @@ class _CoffeeDetailsPageState extends State<CoffeeDetailsPage> {
                         height: 45,
                         child: StylizedTextButton(
                           text: 'BUY NOW',
-                          onTap: () {},
+                          onTap: () {
+                            context.read<CartBloc>().add(
+                                  CartEvent.add(
+                                    CoffeeItemOrder(
+                                        coffee: widget.coffee,
+                                        milk: Milk.values[_index!],
+                                        count: 1),
+                                  ),
+                                );
+                          },
                         ),
                       ),
                     ),
