@@ -14,12 +14,17 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+CoffeeItemOrder _$CoffeeItemOrderFromJson(Map<String, dynamic> json) {
+  return _CoffeeItemOrder.fromJson(json);
+}
+
 /// @nodoc
 mixin _$CoffeeItemOrder {
   Coffee get coffee => throw _privateConstructorUsedError;
   Milk get milk => throw _privateConstructorUsedError;
   int get count => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CoffeeItemOrderCopyWith<CoffeeItemOrder> get copyWith =>
       throw _privateConstructorUsedError;
@@ -125,10 +130,13 @@ class __$$_CoffeeItemOrderCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_CoffeeItemOrder implements _CoffeeItemOrder {
   const _$_CoffeeItemOrder(
       {required this.coffee, this.milk = Milk.oatMilk, required this.count});
+
+  factory _$_CoffeeItemOrder.fromJson(Map<String, dynamic> json) =>
+      _$$_CoffeeItemOrderFromJson(json);
 
   @override
   final Coffee coffee;
@@ -153,6 +161,7 @@ class _$_CoffeeItemOrder implements _CoffeeItemOrder {
             (identical(other.count, count) || other.count == count));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, coffee, milk, count);
 
@@ -161,6 +170,13 @@ class _$_CoffeeItemOrder implements _CoffeeItemOrder {
   @pragma('vm:prefer-inline')
   _$$_CoffeeItemOrderCopyWith<_$_CoffeeItemOrder> get copyWith =>
       __$$_CoffeeItemOrderCopyWithImpl<_$_CoffeeItemOrder>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_CoffeeItemOrderToJson(
+      this,
+    );
+  }
 }
 
 abstract class _CoffeeItemOrder implements CoffeeItemOrder {
@@ -168,6 +184,9 @@ abstract class _CoffeeItemOrder implements CoffeeItemOrder {
       {required final Coffee coffee,
       final Milk milk,
       required final int count}) = _$_CoffeeItemOrder;
+
+  factory _CoffeeItemOrder.fromJson(Map<String, dynamic> json) =
+      _$_CoffeeItemOrder.fromJson;
 
   @override
   Coffee get coffee;

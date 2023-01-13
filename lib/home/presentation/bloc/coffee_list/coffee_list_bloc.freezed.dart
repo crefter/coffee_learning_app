@@ -325,7 +325,9 @@ mixin _$CoffeeListState {
     required TResult Function(
             List<Coffee> coffees, List<Coffee> filteredCoffees)
         loaded,
-    required TResult Function(String error) error,
+    required TResult Function(
+            List<Coffee> coffees, List<Coffee> filteredCoffees, String error)
+        error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -334,7 +336,9 @@ mixin _$CoffeeListState {
     TResult? Function()? loading,
     TResult? Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
         loaded,
-    TResult? Function(String error)? error,
+    TResult? Function(
+            List<Coffee> coffees, List<Coffee> filteredCoffees, String error)?
+        error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -343,7 +347,9 @@ mixin _$CoffeeListState {
     TResult Function()? loading,
     TResult Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
         loaded,
-    TResult Function(String error)? error,
+    TResult Function(
+            List<Coffee> coffees, List<Coffee> filteredCoffees, String error)?
+        error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -435,7 +441,9 @@ class _$EmptyCoffeeListState implements EmptyCoffeeListState {
     required TResult Function(
             List<Coffee> coffees, List<Coffee> filteredCoffees)
         loaded,
-    required TResult Function(String error) error,
+    required TResult Function(
+            List<Coffee> coffees, List<Coffee> filteredCoffees, String error)
+        error,
   }) {
     return empty();
   }
@@ -447,7 +455,9 @@ class _$EmptyCoffeeListState implements EmptyCoffeeListState {
     TResult? Function()? loading,
     TResult? Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
         loaded,
-    TResult? Function(String error)? error,
+    TResult? Function(
+            List<Coffee> coffees, List<Coffee> filteredCoffees, String error)?
+        error,
   }) {
     return empty?.call();
   }
@@ -459,7 +469,9 @@ class _$EmptyCoffeeListState implements EmptyCoffeeListState {
     TResult Function()? loading,
     TResult Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
         loaded,
-    TResult Function(String error)? error,
+    TResult Function(
+            List<Coffee> coffees, List<Coffee> filteredCoffees, String error)?
+        error,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -553,7 +565,9 @@ class _$LoadingCoffeeListState implements LoadingCoffeeListState {
     required TResult Function(
             List<Coffee> coffees, List<Coffee> filteredCoffees)
         loaded,
-    required TResult Function(String error) error,
+    required TResult Function(
+            List<Coffee> coffees, List<Coffee> filteredCoffees, String error)
+        error,
   }) {
     return loading();
   }
@@ -565,7 +579,9 @@ class _$LoadingCoffeeListState implements LoadingCoffeeListState {
     TResult? Function()? loading,
     TResult? Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
         loaded,
-    TResult? Function(String error)? error,
+    TResult? Function(
+            List<Coffee> coffees, List<Coffee> filteredCoffees, String error)?
+        error,
   }) {
     return loading?.call();
   }
@@ -577,7 +593,9 @@ class _$LoadingCoffeeListState implements LoadingCoffeeListState {
     TResult Function()? loading,
     TResult Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
         loaded,
-    TResult Function(String error)? error,
+    TResult Function(
+            List<Coffee> coffees, List<Coffee> filteredCoffees, String error)?
+        error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -710,7 +728,9 @@ class _$LoadedCoffeeListState implements LoadedCoffeeListState {
     required TResult Function(
             List<Coffee> coffees, List<Coffee> filteredCoffees)
         loaded,
-    required TResult Function(String error) error,
+    required TResult Function(
+            List<Coffee> coffees, List<Coffee> filteredCoffees, String error)
+        error,
   }) {
     return loaded(coffees, filteredCoffees);
   }
@@ -722,7 +742,9 @@ class _$LoadedCoffeeListState implements LoadedCoffeeListState {
     TResult? Function()? loading,
     TResult? Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
         loaded,
-    TResult? Function(String error)? error,
+    TResult? Function(
+            List<Coffee> coffees, List<Coffee> filteredCoffees, String error)?
+        error,
   }) {
     return loaded?.call(coffees, filteredCoffees);
   }
@@ -734,7 +756,9 @@ class _$LoadedCoffeeListState implements LoadedCoffeeListState {
     TResult Function()? loading,
     TResult Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
         loaded,
-    TResult Function(String error)? error,
+    TResult Function(
+            List<Coffee> coffees, List<Coffee> filteredCoffees, String error)?
+        error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -799,7 +823,7 @@ abstract class _$$ErrorCoffeeListStateCopyWith<$Res> {
           $Res Function(_$ErrorCoffeeListState) then) =
       __$$ErrorCoffeeListStateCopyWithImpl<$Res>;
   @useResult
-  $Res call({String error});
+  $Res call({List<Coffee> coffees, List<Coffee> filteredCoffees, String error});
 }
 
 /// @nodoc
@@ -813,9 +837,19 @@ class __$$ErrorCoffeeListStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? coffees = null,
+    Object? filteredCoffees = null,
     Object? error = null,
   }) {
     return _then(_$ErrorCoffeeListState(
+      null == coffees
+          ? _value.coffees
+          : coffees // ignore: cast_nullable_to_non_nullable
+              as List<Coffee>,
+      null == filteredCoffees
+          ? _value.filteredCoffees
+          : filteredCoffees // ignore: cast_nullable_to_non_nullable
+              as List<Coffee>,
       null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -827,14 +861,18 @@ class __$$ErrorCoffeeListStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ErrorCoffeeListState implements ErrorCoffeeListState {
-  const _$ErrorCoffeeListState(this.error);
+  const _$ErrorCoffeeListState(this.coffees, this.filteredCoffees, this.error);
 
+  @override
+  final List<Coffee> coffees;
+  @override
+  final List<Coffee> filteredCoffees;
   @override
   final String error;
 
   @override
   String toString() {
-    return 'CoffeeListState.error(error: $error)';
+    return 'CoffeeListState.error(coffees: $coffees, filteredCoffees: $filteredCoffees, error: $error)';
   }
 
   @override
@@ -842,11 +880,18 @@ class _$ErrorCoffeeListState implements ErrorCoffeeListState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ErrorCoffeeListState &&
+            const DeepCollectionEquality().equals(other.coffees, coffees) &&
+            const DeepCollectionEquality()
+                .equals(other.filteredCoffees, filteredCoffees) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, error);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(coffees),
+      const DeepCollectionEquality().hash(filteredCoffees),
+      error);
 
   @JsonKey(ignore: true)
   @override
@@ -863,9 +908,11 @@ class _$ErrorCoffeeListState implements ErrorCoffeeListState {
     required TResult Function(
             List<Coffee> coffees, List<Coffee> filteredCoffees)
         loaded,
-    required TResult Function(String error) error,
+    required TResult Function(
+            List<Coffee> coffees, List<Coffee> filteredCoffees, String error)
+        error,
   }) {
-    return error(this.error);
+    return error(coffees, filteredCoffees, this.error);
   }
 
   @override
@@ -875,9 +922,11 @@ class _$ErrorCoffeeListState implements ErrorCoffeeListState {
     TResult? Function()? loading,
     TResult? Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
         loaded,
-    TResult? Function(String error)? error,
+    TResult? Function(
+            List<Coffee> coffees, List<Coffee> filteredCoffees, String error)?
+        error,
   }) {
-    return error?.call(this.error);
+    return error?.call(coffees, filteredCoffees, this.error);
   }
 
   @override
@@ -887,11 +936,13 @@ class _$ErrorCoffeeListState implements ErrorCoffeeListState {
     TResult Function()? loading,
     TResult Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
         loaded,
-    TResult Function(String error)? error,
+    TResult Function(
+            List<Coffee> coffees, List<Coffee> filteredCoffees, String error)?
+        error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(this.error);
+      return error(coffees, filteredCoffees, this.error);
     }
     return orElse();
   }
@@ -935,9 +986,13 @@ class _$ErrorCoffeeListState implements ErrorCoffeeListState {
 }
 
 abstract class ErrorCoffeeListState implements CoffeeListState {
-  const factory ErrorCoffeeListState(final String error) =
-      _$ErrorCoffeeListState;
+  const factory ErrorCoffeeListState(
+      final List<Coffee> coffees,
+      final List<Coffee> filteredCoffees,
+      final String error) = _$ErrorCoffeeListState;
 
+  List<Coffee> get coffees;
+  List<Coffee> get filteredCoffees;
   String get error;
   @JsonKey(ignore: true)
   _$$ErrorCoffeeListStateCopyWith<_$ErrorCoffeeListState> get copyWith =>

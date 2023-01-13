@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Coffee _$CoffeeFromJson(Map<String, dynamic> json) {
+  return _Coffee.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Coffee {
   int get id => throw _privateConstructorUsedError;
@@ -25,6 +29,7 @@ mixin _$Coffee {
   String get image => throw _privateConstructorUsedError;
   String get currency => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CoffeeCopyWith<Coffee> get copyWith => throw _privateConstructorUsedError;
 }
@@ -178,10 +183,13 @@ class __$$_CoffeeCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Coffee implements _Coffee {
   const _$_Coffee(this.id, this.type, this.name, this.description, this.price,
       this.rating, this.image, this.currency);
+
+  factory _$_Coffee.fromJson(Map<String, dynamic> json) =>
+      _$$_CoffeeFromJson(json);
 
   @override
   final int id;
@@ -222,6 +230,7 @@ class _$_Coffee implements _Coffee {
                 other.currency == currency));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, type, name, description, price, rating, image, currency);
@@ -231,6 +240,13 @@ class _$_Coffee implements _Coffee {
   @pragma('vm:prefer-inline')
   _$$_CoffeeCopyWith<_$_Coffee> get copyWith =>
       __$$_CoffeeCopyWithImpl<_$_Coffee>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_CoffeeToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Coffee implements Coffee {
@@ -243,6 +259,8 @@ abstract class _Coffee implements Coffee {
       final double rating,
       final String image,
       final String currency) = _$_Coffee;
+
+  factory _Coffee.fromJson(Map<String, dynamic> json) = _$_Coffee.fromJson;
 
   @override
   int get id;

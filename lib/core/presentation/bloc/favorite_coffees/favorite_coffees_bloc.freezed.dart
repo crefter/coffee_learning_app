@@ -16,22 +16,21 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$FavoriteCoffeesEvent {
-  Coffee? get coffee => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Coffee? coffee) load,
+    required TResult Function() load,
     required TResult Function(Coffee coffee) update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Coffee? coffee)? load,
+    TResult? Function()? load,
     TResult? Function(Coffee coffee)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Coffee? coffee)? load,
+    TResult Function()? load,
     TResult Function(Coffee coffee)? update,
     required TResult orElse(),
   }) =>
@@ -55,10 +54,6 @@ mixin _$FavoriteCoffeesEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $FavoriteCoffeesEventCopyWith<FavoriteCoffeesEvent> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -66,10 +61,6 @@ abstract class $FavoriteCoffeesEventCopyWith<$Res> {
   factory $FavoriteCoffeesEventCopyWith(FavoriteCoffeesEvent value,
           $Res Function(FavoriteCoffeesEvent) then) =
       _$FavoriteCoffeesEventCopyWithImpl<$Res, FavoriteCoffeesEvent>;
-  @useResult
-  $Res call({Coffee coffee});
-
-  $CoffeeCopyWith<$Res>? get coffee;
 }
 
 /// @nodoc
@@ -82,46 +73,14 @@ class _$FavoriteCoffeesEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? coffee = null,
-  }) {
-    return _then(_value.copyWith(
-      coffee: null == coffee
-          ? _value.coffee!
-          : coffee // ignore: cast_nullable_to_non_nullable
-              as Coffee,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $CoffeeCopyWith<$Res>? get coffee {
-    if (_value.coffee == null) {
-      return null;
-    }
-
-    return $CoffeeCopyWith<$Res>(_value.coffee!, (value) {
-      return _then(_value.copyWith(coffee: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$_FavoriteCoffeesEventLoadCopyWith<$Res>
-    implements $FavoriteCoffeesEventCopyWith<$Res> {
+abstract class _$$_FavoriteCoffeesEventLoadCopyWith<$Res> {
   factory _$$_FavoriteCoffeesEventLoadCopyWith(
           _$_FavoriteCoffeesEventLoad value,
           $Res Function(_$_FavoriteCoffeesEventLoad) then) =
       __$$_FavoriteCoffeesEventLoadCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({Coffee? coffee});
-
-  @override
-  $CoffeeCopyWith<$Res>? get coffee;
 }
 
 /// @nodoc
@@ -132,79 +91,55 @@ class __$$_FavoriteCoffeesEventLoadCopyWithImpl<$Res>
   __$$_FavoriteCoffeesEventLoadCopyWithImpl(_$_FavoriteCoffeesEventLoad _value,
       $Res Function(_$_FavoriteCoffeesEventLoad) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? coffee = freezed,
-  }) {
-    return _then(_$_FavoriteCoffeesEventLoad(
-      freezed == coffee
-          ? _value.coffee
-          : coffee // ignore: cast_nullable_to_non_nullable
-              as Coffee?,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$_FavoriteCoffeesEventLoad implements _FavoriteCoffeesEventLoad {
-  const _$_FavoriteCoffeesEventLoad(this.coffee);
-
-  @override
-  final Coffee? coffee;
+  const _$_FavoriteCoffeesEventLoad();
 
   @override
   String toString() {
-    return 'FavoriteCoffeesEvent.load(coffee: $coffee)';
+    return 'FavoriteCoffeesEvent.load()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FavoriteCoffeesEventLoad &&
-            (identical(other.coffee, coffee) || other.coffee == coffee));
+            other is _$_FavoriteCoffeesEventLoad);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, coffee);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_FavoriteCoffeesEventLoadCopyWith<_$_FavoriteCoffeesEventLoad>
-      get copyWith => __$$_FavoriteCoffeesEventLoadCopyWithImpl<
-          _$_FavoriteCoffeesEventLoad>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Coffee? coffee) load,
+    required TResult Function() load,
     required TResult Function(Coffee coffee) update,
   }) {
-    return load(coffee);
+    return load();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Coffee? coffee)? load,
+    TResult? Function()? load,
     TResult? Function(Coffee coffee)? update,
   }) {
-    return load?.call(coffee);
+    return load?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Coffee? coffee)? load,
+    TResult Function()? load,
     TResult Function(Coffee coffee)? update,
     required TResult orElse(),
   }) {
     if (load != null) {
-      return load(coffee);
+      return load();
     }
     return orElse();
   }
@@ -242,29 +177,18 @@ class _$_FavoriteCoffeesEventLoad implements _FavoriteCoffeesEventLoad {
 }
 
 abstract class _FavoriteCoffeesEventLoad implements FavoriteCoffeesEvent {
-  const factory _FavoriteCoffeesEventLoad(final Coffee? coffee) =
-      _$_FavoriteCoffeesEventLoad;
-
-  @override
-  Coffee? get coffee;
-  @override
-  @JsonKey(ignore: true)
-  _$$_FavoriteCoffeesEventLoadCopyWith<_$_FavoriteCoffeesEventLoad>
-      get copyWith => throw _privateConstructorUsedError;
+  const factory _FavoriteCoffeesEventLoad() = _$_FavoriteCoffeesEventLoad;
 }
 
 /// @nodoc
-abstract class _$$_FavoriteCoffeesEventUpdateCopyWith<$Res>
-    implements $FavoriteCoffeesEventCopyWith<$Res> {
+abstract class _$$_FavoriteCoffeesEventUpdateCopyWith<$Res> {
   factory _$$_FavoriteCoffeesEventUpdateCopyWith(
           _$_FavoriteCoffeesEventUpdate value,
           $Res Function(_$_FavoriteCoffeesEventUpdate) then) =
       __$$_FavoriteCoffeesEventUpdateCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({Coffee coffee});
 
-  @override
   $CoffeeCopyWith<$Res> get coffee;
 }
 
@@ -334,7 +258,7 @@ class _$_FavoriteCoffeesEventUpdate implements _FavoriteCoffeesEventUpdate {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Coffee? coffee) load,
+    required TResult Function() load,
     required TResult Function(Coffee coffee) update,
   }) {
     return update(coffee);
@@ -343,7 +267,7 @@ class _$_FavoriteCoffeesEventUpdate implements _FavoriteCoffeesEventUpdate {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Coffee? coffee)? load,
+    TResult? Function()? load,
     TResult? Function(Coffee coffee)? update,
   }) {
     return update?.call(coffee);
@@ -352,7 +276,7 @@ class _$_FavoriteCoffeesEventUpdate implements _FavoriteCoffeesEventUpdate {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Coffee? coffee)? load,
+    TResult Function()? load,
     TResult Function(Coffee coffee)? update,
     required TResult orElse(),
   }) {
@@ -398,9 +322,7 @@ abstract class _FavoriteCoffeesEventUpdate implements FavoriteCoffeesEvent {
   const factory _FavoriteCoffeesEventUpdate(final Coffee coffee) =
       _$_FavoriteCoffeesEventUpdate;
 
-  @override
   Coffee get coffee;
-  @override
   @JsonKey(ignore: true)
   _$$_FavoriteCoffeesEventUpdateCopyWith<_$_FavoriteCoffeesEventUpdate>
       get copyWith => throw _privateConstructorUsedError;
@@ -413,6 +335,8 @@ mixin _$FavoriteCoffeesState {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function(List<Coffee> favoriteCoffees) loaded,
+    required TResult Function(List<Coffee> favoriteCoffees, String message)
+        error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -420,6 +344,7 @@ mixin _$FavoriteCoffeesState {
     TResult? Function()? empty,
     TResult? Function()? loading,
     TResult? Function(List<Coffee> favoriteCoffees)? loaded,
+    TResult? Function(List<Coffee> favoriteCoffees, String message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -427,28 +352,32 @@ mixin _$FavoriteCoffeesState {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(List<Coffee> favoriteCoffees)? loaded,
+    TResult Function(List<Coffee> favoriteCoffees, String message)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FavoriteCoffeesStateEmpty value) empty,
-    required TResult Function(_FavoriteCoffeesStateLoading value) loading,
-    required TResult Function(_FavoriteCoffeesStateLoaded value) loaded,
+    required TResult Function(FavoriteCoffeesStateEmpty value) empty,
+    required TResult Function(FavoriteCoffeesStateLoading value) loading,
+    required TResult Function(FavoriteCoffeesStateLoaded value) loaded,
+    required TResult Function(FavoriteCoffeesStateError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FavoriteCoffeesStateEmpty value)? empty,
-    TResult? Function(_FavoriteCoffeesStateLoading value)? loading,
-    TResult? Function(_FavoriteCoffeesStateLoaded value)? loaded,
+    TResult? Function(FavoriteCoffeesStateEmpty value)? empty,
+    TResult? Function(FavoriteCoffeesStateLoading value)? loading,
+    TResult? Function(FavoriteCoffeesStateLoaded value)? loaded,
+    TResult? Function(FavoriteCoffeesStateError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FavoriteCoffeesStateEmpty value)? empty,
-    TResult Function(_FavoriteCoffeesStateLoading value)? loading,
-    TResult Function(_FavoriteCoffeesStateLoaded value)? loaded,
+    TResult Function(FavoriteCoffeesStateEmpty value)? empty,
+    TResult Function(FavoriteCoffeesStateLoading value)? loading,
+    TResult Function(FavoriteCoffeesStateLoaded value)? loaded,
+    TResult Function(FavoriteCoffeesStateError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -474,28 +403,27 @@ class _$FavoriteCoffeesStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_FavoriteCoffeesStateEmptyCopyWith<$Res> {
-  factory _$$_FavoriteCoffeesStateEmptyCopyWith(
-          _$_FavoriteCoffeesStateEmpty value,
-          $Res Function(_$_FavoriteCoffeesStateEmpty) then) =
-      __$$_FavoriteCoffeesStateEmptyCopyWithImpl<$Res>;
+abstract class _$$FavoriteCoffeesStateEmptyCopyWith<$Res> {
+  factory _$$FavoriteCoffeesStateEmptyCopyWith(
+          _$FavoriteCoffeesStateEmpty value,
+          $Res Function(_$FavoriteCoffeesStateEmpty) then) =
+      __$$FavoriteCoffeesStateEmptyCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FavoriteCoffeesStateEmptyCopyWithImpl<$Res>
+class __$$FavoriteCoffeesStateEmptyCopyWithImpl<$Res>
     extends _$FavoriteCoffeesStateCopyWithImpl<$Res,
-        _$_FavoriteCoffeesStateEmpty>
-    implements _$$_FavoriteCoffeesStateEmptyCopyWith<$Res> {
-  __$$_FavoriteCoffeesStateEmptyCopyWithImpl(
-      _$_FavoriteCoffeesStateEmpty _value,
-      $Res Function(_$_FavoriteCoffeesStateEmpty) _then)
+        _$FavoriteCoffeesStateEmpty>
+    implements _$$FavoriteCoffeesStateEmptyCopyWith<$Res> {
+  __$$FavoriteCoffeesStateEmptyCopyWithImpl(_$FavoriteCoffeesStateEmpty _value,
+      $Res Function(_$FavoriteCoffeesStateEmpty) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_FavoriteCoffeesStateEmpty implements _FavoriteCoffeesStateEmpty {
-  const _$_FavoriteCoffeesStateEmpty();
+class _$FavoriteCoffeesStateEmpty implements FavoriteCoffeesStateEmpty {
+  const _$FavoriteCoffeesStateEmpty();
 
   @override
   String toString() {
@@ -506,7 +434,7 @@ class _$_FavoriteCoffeesStateEmpty implements _FavoriteCoffeesStateEmpty {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FavoriteCoffeesStateEmpty);
+            other is _$FavoriteCoffeesStateEmpty);
   }
 
   @override
@@ -518,6 +446,8 @@ class _$_FavoriteCoffeesStateEmpty implements _FavoriteCoffeesStateEmpty {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function(List<Coffee> favoriteCoffees) loaded,
+    required TResult Function(List<Coffee> favoriteCoffees, String message)
+        error,
   }) {
     return empty();
   }
@@ -528,6 +458,7 @@ class _$_FavoriteCoffeesStateEmpty implements _FavoriteCoffeesStateEmpty {
     TResult? Function()? empty,
     TResult? Function()? loading,
     TResult? Function(List<Coffee> favoriteCoffees)? loaded,
+    TResult? Function(List<Coffee> favoriteCoffees, String message)? error,
   }) {
     return empty?.call();
   }
@@ -538,6 +469,7 @@ class _$_FavoriteCoffeesStateEmpty implements _FavoriteCoffeesStateEmpty {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(List<Coffee> favoriteCoffees)? loaded,
+    TResult Function(List<Coffee> favoriteCoffees, String message)? error,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -549,9 +481,10 @@ class _$_FavoriteCoffeesStateEmpty implements _FavoriteCoffeesStateEmpty {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FavoriteCoffeesStateEmpty value) empty,
-    required TResult Function(_FavoriteCoffeesStateLoading value) loading,
-    required TResult Function(_FavoriteCoffeesStateLoaded value) loaded,
+    required TResult Function(FavoriteCoffeesStateEmpty value) empty,
+    required TResult Function(FavoriteCoffeesStateLoading value) loading,
+    required TResult Function(FavoriteCoffeesStateLoaded value) loaded,
+    required TResult Function(FavoriteCoffeesStateError value) error,
   }) {
     return empty(this);
   }
@@ -559,9 +492,10 @@ class _$_FavoriteCoffeesStateEmpty implements _FavoriteCoffeesStateEmpty {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FavoriteCoffeesStateEmpty value)? empty,
-    TResult? Function(_FavoriteCoffeesStateLoading value)? loading,
-    TResult? Function(_FavoriteCoffeesStateLoaded value)? loaded,
+    TResult? Function(FavoriteCoffeesStateEmpty value)? empty,
+    TResult? Function(FavoriteCoffeesStateLoading value)? loading,
+    TResult? Function(FavoriteCoffeesStateLoaded value)? loaded,
+    TResult? Function(FavoriteCoffeesStateError value)? error,
   }) {
     return empty?.call(this);
   }
@@ -569,9 +503,10 @@ class _$_FavoriteCoffeesStateEmpty implements _FavoriteCoffeesStateEmpty {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FavoriteCoffeesStateEmpty value)? empty,
-    TResult Function(_FavoriteCoffeesStateLoading value)? loading,
-    TResult Function(_FavoriteCoffeesStateLoaded value)? loaded,
+    TResult Function(FavoriteCoffeesStateEmpty value)? empty,
+    TResult Function(FavoriteCoffeesStateLoading value)? loading,
+    TResult Function(FavoriteCoffeesStateLoaded value)? loaded,
+    TResult Function(FavoriteCoffeesStateError value)? error,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -581,33 +516,33 @@ class _$_FavoriteCoffeesStateEmpty implements _FavoriteCoffeesStateEmpty {
   }
 }
 
-abstract class _FavoriteCoffeesStateEmpty implements FavoriteCoffeesState {
-  const factory _FavoriteCoffeesStateEmpty() = _$_FavoriteCoffeesStateEmpty;
+abstract class FavoriteCoffeesStateEmpty implements FavoriteCoffeesState {
+  const factory FavoriteCoffeesStateEmpty() = _$FavoriteCoffeesStateEmpty;
 }
 
 /// @nodoc
-abstract class _$$_FavoriteCoffeesStateLoadingCopyWith<$Res> {
-  factory _$$_FavoriteCoffeesStateLoadingCopyWith(
-          _$_FavoriteCoffeesStateLoading value,
-          $Res Function(_$_FavoriteCoffeesStateLoading) then) =
-      __$$_FavoriteCoffeesStateLoadingCopyWithImpl<$Res>;
+abstract class _$$FavoriteCoffeesStateLoadingCopyWith<$Res> {
+  factory _$$FavoriteCoffeesStateLoadingCopyWith(
+          _$FavoriteCoffeesStateLoading value,
+          $Res Function(_$FavoriteCoffeesStateLoading) then) =
+      __$$FavoriteCoffeesStateLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FavoriteCoffeesStateLoadingCopyWithImpl<$Res>
+class __$$FavoriteCoffeesStateLoadingCopyWithImpl<$Res>
     extends _$FavoriteCoffeesStateCopyWithImpl<$Res,
-        _$_FavoriteCoffeesStateLoading>
-    implements _$$_FavoriteCoffeesStateLoadingCopyWith<$Res> {
-  __$$_FavoriteCoffeesStateLoadingCopyWithImpl(
-      _$_FavoriteCoffeesStateLoading _value,
-      $Res Function(_$_FavoriteCoffeesStateLoading) _then)
+        _$FavoriteCoffeesStateLoading>
+    implements _$$FavoriteCoffeesStateLoadingCopyWith<$Res> {
+  __$$FavoriteCoffeesStateLoadingCopyWithImpl(
+      _$FavoriteCoffeesStateLoading _value,
+      $Res Function(_$FavoriteCoffeesStateLoading) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_FavoriteCoffeesStateLoading implements _FavoriteCoffeesStateLoading {
-  const _$_FavoriteCoffeesStateLoading();
+class _$FavoriteCoffeesStateLoading implements FavoriteCoffeesStateLoading {
+  const _$FavoriteCoffeesStateLoading();
 
   @override
   String toString() {
@@ -618,7 +553,7 @@ class _$_FavoriteCoffeesStateLoading implements _FavoriteCoffeesStateLoading {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FavoriteCoffeesStateLoading);
+            other is _$FavoriteCoffeesStateLoading);
   }
 
   @override
@@ -630,6 +565,8 @@ class _$_FavoriteCoffeesStateLoading implements _FavoriteCoffeesStateLoading {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function(List<Coffee> favoriteCoffees) loaded,
+    required TResult Function(List<Coffee> favoriteCoffees, String message)
+        error,
   }) {
     return loading();
   }
@@ -640,6 +577,7 @@ class _$_FavoriteCoffeesStateLoading implements _FavoriteCoffeesStateLoading {
     TResult? Function()? empty,
     TResult? Function()? loading,
     TResult? Function(List<Coffee> favoriteCoffees)? loaded,
+    TResult? Function(List<Coffee> favoriteCoffees, String message)? error,
   }) {
     return loading?.call();
   }
@@ -650,6 +588,7 @@ class _$_FavoriteCoffeesStateLoading implements _FavoriteCoffeesStateLoading {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(List<Coffee> favoriteCoffees)? loaded,
+    TResult Function(List<Coffee> favoriteCoffees, String message)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -661,9 +600,10 @@ class _$_FavoriteCoffeesStateLoading implements _FavoriteCoffeesStateLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FavoriteCoffeesStateEmpty value) empty,
-    required TResult Function(_FavoriteCoffeesStateLoading value) loading,
-    required TResult Function(_FavoriteCoffeesStateLoaded value) loaded,
+    required TResult Function(FavoriteCoffeesStateEmpty value) empty,
+    required TResult Function(FavoriteCoffeesStateLoading value) loading,
+    required TResult Function(FavoriteCoffeesStateLoaded value) loaded,
+    required TResult Function(FavoriteCoffeesStateError value) error,
   }) {
     return loading(this);
   }
@@ -671,9 +611,10 @@ class _$_FavoriteCoffeesStateLoading implements _FavoriteCoffeesStateLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FavoriteCoffeesStateEmpty value)? empty,
-    TResult? Function(_FavoriteCoffeesStateLoading value)? loading,
-    TResult? Function(_FavoriteCoffeesStateLoaded value)? loaded,
+    TResult? Function(FavoriteCoffeesStateEmpty value)? empty,
+    TResult? Function(FavoriteCoffeesStateLoading value)? loading,
+    TResult? Function(FavoriteCoffeesStateLoaded value)? loaded,
+    TResult? Function(FavoriteCoffeesStateError value)? error,
   }) {
     return loading?.call(this);
   }
@@ -681,9 +622,10 @@ class _$_FavoriteCoffeesStateLoading implements _FavoriteCoffeesStateLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FavoriteCoffeesStateEmpty value)? empty,
-    TResult Function(_FavoriteCoffeesStateLoading value)? loading,
-    TResult Function(_FavoriteCoffeesStateLoaded value)? loaded,
+    TResult Function(FavoriteCoffeesStateEmpty value)? empty,
+    TResult Function(FavoriteCoffeesStateLoading value)? loading,
+    TResult Function(FavoriteCoffeesStateLoaded value)? loaded,
+    TResult Function(FavoriteCoffeesStateError value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -693,28 +635,28 @@ class _$_FavoriteCoffeesStateLoading implements _FavoriteCoffeesStateLoading {
   }
 }
 
-abstract class _FavoriteCoffeesStateLoading implements FavoriteCoffeesState {
-  const factory _FavoriteCoffeesStateLoading() = _$_FavoriteCoffeesStateLoading;
+abstract class FavoriteCoffeesStateLoading implements FavoriteCoffeesState {
+  const factory FavoriteCoffeesStateLoading() = _$FavoriteCoffeesStateLoading;
 }
 
 /// @nodoc
-abstract class _$$_FavoriteCoffeesStateLoadedCopyWith<$Res> {
-  factory _$$_FavoriteCoffeesStateLoadedCopyWith(
-          _$_FavoriteCoffeesStateLoaded value,
-          $Res Function(_$_FavoriteCoffeesStateLoaded) then) =
-      __$$_FavoriteCoffeesStateLoadedCopyWithImpl<$Res>;
+abstract class _$$FavoriteCoffeesStateLoadedCopyWith<$Res> {
+  factory _$$FavoriteCoffeesStateLoadedCopyWith(
+          _$FavoriteCoffeesStateLoaded value,
+          $Res Function(_$FavoriteCoffeesStateLoaded) then) =
+      __$$FavoriteCoffeesStateLoadedCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Coffee> favoriteCoffees});
 }
 
 /// @nodoc
-class __$$_FavoriteCoffeesStateLoadedCopyWithImpl<$Res>
+class __$$FavoriteCoffeesStateLoadedCopyWithImpl<$Res>
     extends _$FavoriteCoffeesStateCopyWithImpl<$Res,
-        _$_FavoriteCoffeesStateLoaded>
-    implements _$$_FavoriteCoffeesStateLoadedCopyWith<$Res> {
-  __$$_FavoriteCoffeesStateLoadedCopyWithImpl(
-      _$_FavoriteCoffeesStateLoaded _value,
-      $Res Function(_$_FavoriteCoffeesStateLoaded) _then)
+        _$FavoriteCoffeesStateLoaded>
+    implements _$$FavoriteCoffeesStateLoadedCopyWith<$Res> {
+  __$$FavoriteCoffeesStateLoadedCopyWithImpl(
+      _$FavoriteCoffeesStateLoaded _value,
+      $Res Function(_$FavoriteCoffeesStateLoaded) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -722,7 +664,7 @@ class __$$_FavoriteCoffeesStateLoadedCopyWithImpl<$Res>
   $Res call({
     Object? favoriteCoffees = null,
   }) {
-    return _then(_$_FavoriteCoffeesStateLoaded(
+    return _then(_$FavoriteCoffeesStateLoaded(
       null == favoriteCoffees
           ? _value._favoriteCoffees
           : favoriteCoffees // ignore: cast_nullable_to_non_nullable
@@ -733,8 +675,8 @@ class __$$_FavoriteCoffeesStateLoadedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FavoriteCoffeesStateLoaded implements _FavoriteCoffeesStateLoaded {
-  const _$_FavoriteCoffeesStateLoaded(final List<Coffee> favoriteCoffees)
+class _$FavoriteCoffeesStateLoaded implements FavoriteCoffeesStateLoaded {
+  const _$FavoriteCoffeesStateLoaded(final List<Coffee> favoriteCoffees)
       : _favoriteCoffees = favoriteCoffees;
 
   final List<Coffee> _favoriteCoffees;
@@ -754,7 +696,7 @@ class _$_FavoriteCoffeesStateLoaded implements _FavoriteCoffeesStateLoaded {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FavoriteCoffeesStateLoaded &&
+            other is _$FavoriteCoffeesStateLoaded &&
             const DeepCollectionEquality()
                 .equals(other._favoriteCoffees, _favoriteCoffees));
   }
@@ -766,9 +708,9 @@ class _$_FavoriteCoffeesStateLoaded implements _FavoriteCoffeesStateLoaded {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FavoriteCoffeesStateLoadedCopyWith<_$_FavoriteCoffeesStateLoaded>
-      get copyWith => __$$_FavoriteCoffeesStateLoadedCopyWithImpl<
-          _$_FavoriteCoffeesStateLoaded>(this, _$identity);
+  _$$FavoriteCoffeesStateLoadedCopyWith<_$FavoriteCoffeesStateLoaded>
+      get copyWith => __$$FavoriteCoffeesStateLoadedCopyWithImpl<
+          _$FavoriteCoffeesStateLoaded>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -776,6 +718,8 @@ class _$_FavoriteCoffeesStateLoaded implements _FavoriteCoffeesStateLoaded {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function(List<Coffee> favoriteCoffees) loaded,
+    required TResult Function(List<Coffee> favoriteCoffees, String message)
+        error,
   }) {
     return loaded(favoriteCoffees);
   }
@@ -786,6 +730,7 @@ class _$_FavoriteCoffeesStateLoaded implements _FavoriteCoffeesStateLoaded {
     TResult? Function()? empty,
     TResult? Function()? loading,
     TResult? Function(List<Coffee> favoriteCoffees)? loaded,
+    TResult? Function(List<Coffee> favoriteCoffees, String message)? error,
   }) {
     return loaded?.call(favoriteCoffees);
   }
@@ -796,6 +741,7 @@ class _$_FavoriteCoffeesStateLoaded implements _FavoriteCoffeesStateLoaded {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(List<Coffee> favoriteCoffees)? loaded,
+    TResult Function(List<Coffee> favoriteCoffees, String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -807,9 +753,10 @@ class _$_FavoriteCoffeesStateLoaded implements _FavoriteCoffeesStateLoaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FavoriteCoffeesStateEmpty value) empty,
-    required TResult Function(_FavoriteCoffeesStateLoading value) loading,
-    required TResult Function(_FavoriteCoffeesStateLoaded value) loaded,
+    required TResult Function(FavoriteCoffeesStateEmpty value) empty,
+    required TResult Function(FavoriteCoffeesStateLoading value) loading,
+    required TResult Function(FavoriteCoffeesStateLoaded value) loaded,
+    required TResult Function(FavoriteCoffeesStateError value) error,
   }) {
     return loaded(this);
   }
@@ -817,9 +764,10 @@ class _$_FavoriteCoffeesStateLoaded implements _FavoriteCoffeesStateLoaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FavoriteCoffeesStateEmpty value)? empty,
-    TResult? Function(_FavoriteCoffeesStateLoading value)? loading,
-    TResult? Function(_FavoriteCoffeesStateLoaded value)? loaded,
+    TResult? Function(FavoriteCoffeesStateEmpty value)? empty,
+    TResult? Function(FavoriteCoffeesStateLoading value)? loading,
+    TResult? Function(FavoriteCoffeesStateLoaded value)? loaded,
+    TResult? Function(FavoriteCoffeesStateError value)? error,
   }) {
     return loaded?.call(this);
   }
@@ -827,9 +775,10 @@ class _$_FavoriteCoffeesStateLoaded implements _FavoriteCoffeesStateLoaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FavoriteCoffeesStateEmpty value)? empty,
-    TResult Function(_FavoriteCoffeesStateLoading value)? loading,
-    TResult Function(_FavoriteCoffeesStateLoaded value)? loaded,
+    TResult Function(FavoriteCoffeesStateEmpty value)? empty,
+    TResult Function(FavoriteCoffeesStateLoading value)? loading,
+    TResult Function(FavoriteCoffeesStateLoaded value)? loaded,
+    TResult Function(FavoriteCoffeesStateError value)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -839,12 +788,182 @@ class _$_FavoriteCoffeesStateLoaded implements _FavoriteCoffeesStateLoaded {
   }
 }
 
-abstract class _FavoriteCoffeesStateLoaded implements FavoriteCoffeesState {
-  const factory _FavoriteCoffeesStateLoaded(
-      final List<Coffee> favoriteCoffees) = _$_FavoriteCoffeesStateLoaded;
+abstract class FavoriteCoffeesStateLoaded implements FavoriteCoffeesState {
+  const factory FavoriteCoffeesStateLoaded(final List<Coffee> favoriteCoffees) =
+      _$FavoriteCoffeesStateLoaded;
 
   List<Coffee> get favoriteCoffees;
   @JsonKey(ignore: true)
-  _$$_FavoriteCoffeesStateLoadedCopyWith<_$_FavoriteCoffeesStateLoaded>
+  _$$FavoriteCoffeesStateLoadedCopyWith<_$FavoriteCoffeesStateLoaded>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FavoriteCoffeesStateErrorCopyWith<$Res> {
+  factory _$$FavoriteCoffeesStateErrorCopyWith(
+          _$FavoriteCoffeesStateError value,
+          $Res Function(_$FavoriteCoffeesStateError) then) =
+      __$$FavoriteCoffeesStateErrorCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Coffee> favoriteCoffees, String message});
+}
+
+/// @nodoc
+class __$$FavoriteCoffeesStateErrorCopyWithImpl<$Res>
+    extends _$FavoriteCoffeesStateCopyWithImpl<$Res,
+        _$FavoriteCoffeesStateError>
+    implements _$$FavoriteCoffeesStateErrorCopyWith<$Res> {
+  __$$FavoriteCoffeesStateErrorCopyWithImpl(_$FavoriteCoffeesStateError _value,
+      $Res Function(_$FavoriteCoffeesStateError) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? favoriteCoffees = null,
+    Object? message = null,
+  }) {
+    return _then(_$FavoriteCoffeesStateError(
+      null == favoriteCoffees
+          ? _value._favoriteCoffees
+          : favoriteCoffees // ignore: cast_nullable_to_non_nullable
+              as List<Coffee>,
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FavoriteCoffeesStateError implements FavoriteCoffeesStateError {
+  const _$FavoriteCoffeesStateError(
+      final List<Coffee> favoriteCoffees, this.message)
+      : _favoriteCoffees = favoriteCoffees;
+
+  final List<Coffee> _favoriteCoffees;
+  @override
+  List<Coffee> get favoriteCoffees {
+    if (_favoriteCoffees is EqualUnmodifiableListView) return _favoriteCoffees;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_favoriteCoffees);
+  }
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'FavoriteCoffeesState.error(favoriteCoffees: $favoriteCoffees, message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FavoriteCoffeesStateError &&
+            const DeepCollectionEquality()
+                .equals(other._favoriteCoffees, _favoriteCoffees) &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_favoriteCoffees), message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FavoriteCoffeesStateErrorCopyWith<_$FavoriteCoffeesStateError>
+      get copyWith => __$$FavoriteCoffeesStateErrorCopyWithImpl<
+          _$FavoriteCoffeesStateError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function() loading,
+    required TResult Function(List<Coffee> favoriteCoffees) loaded,
+    required TResult Function(List<Coffee> favoriteCoffees, String message)
+        error,
+  }) {
+    return error(favoriteCoffees, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? empty,
+    TResult? Function()? loading,
+    TResult? Function(List<Coffee> favoriteCoffees)? loaded,
+    TResult? Function(List<Coffee> favoriteCoffees, String message)? error,
+  }) {
+    return error?.call(favoriteCoffees, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function()? loading,
+    TResult Function(List<Coffee> favoriteCoffees)? loaded,
+    TResult Function(List<Coffee> favoriteCoffees, String message)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(favoriteCoffees, message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FavoriteCoffeesStateEmpty value) empty,
+    required TResult Function(FavoriteCoffeesStateLoading value) loading,
+    required TResult Function(FavoriteCoffeesStateLoaded value) loaded,
+    required TResult Function(FavoriteCoffeesStateError value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FavoriteCoffeesStateEmpty value)? empty,
+    TResult? Function(FavoriteCoffeesStateLoading value)? loading,
+    TResult? Function(FavoriteCoffeesStateLoaded value)? loaded,
+    TResult? Function(FavoriteCoffeesStateError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FavoriteCoffeesStateEmpty value)? empty,
+    TResult Function(FavoriteCoffeesStateLoading value)? loading,
+    TResult Function(FavoriteCoffeesStateLoaded value)? loaded,
+    TResult Function(FavoriteCoffeesStateError value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FavoriteCoffeesStateError implements FavoriteCoffeesState {
+  const factory FavoriteCoffeesStateError(
+          final List<Coffee> favoriteCoffees, final String message) =
+      _$FavoriteCoffeesStateError;
+
+  List<Coffee> get favoriteCoffees;
+  String get message;
+  @JsonKey(ignore: true)
+  _$$FavoriteCoffeesStateErrorCopyWith<_$FavoriteCoffeesStateError>
       get copyWith => throw _privateConstructorUsedError;
 }
