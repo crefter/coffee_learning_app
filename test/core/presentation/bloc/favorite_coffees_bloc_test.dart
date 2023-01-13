@@ -51,14 +51,14 @@ void main() {
       expect(states, expected);
     });
     test(
-        'should return [empty, empty] '
+        'should return [empty, loading, loaded] '
         'when update event and state is empty', () async {
       final states = <FavoriteCoffeesState>[];
       states.add(bloc.state);
       bloc.stream.listen((state) => states.add(state));
       bloc.add(FavoriteCoffeesEvent.update(MockCoffee()));
       await Future.delayed(Duration.zero);
-      final expected = [empty, empty];
+      final expected = [empty, loading, loaded];
       expect(states, expected);
     });
     test(

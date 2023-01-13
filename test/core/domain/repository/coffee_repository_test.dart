@@ -115,8 +115,10 @@ void main() {
     group('saveFavorites()', () {
       test('should call save() localFavoriteDatasource', () async {
         when(favoritesLocalDatasource.save([])).thenAnswer((_) async {});
+        when(favoritesRemoteDatasource.post([])).thenAnswer((_) async {});
         await coffeeRepository.saveFavorites([]);
         verify(favoritesLocalDatasource.save([])).called(1);
+        verify(favoritesRemoteDatasource.post([])).called(1);
       });
     });
   });

@@ -90,10 +90,12 @@ void main() {
       });
     });
     group('save()', () {
-      test('should save data to localDatasource', () async {
-        when(localDatasource.save([])).thenAnswer((realInvocation) async {});
+      test('should save data to localDatasource and remoteDatasource', () async {
+        when(localDatasource.save([])).thenAnswer((_) async {});
+        when(remoteDatasource.post([])).thenAnswer((_) async {});
         await repository.save([]);
         verify(localDatasource.save([])).called(1);
+        verify(remoteDatasource.post([])).called(1);
       });
     });
   });
