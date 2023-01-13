@@ -38,7 +38,5 @@ class CoffeeRemoteDatasource implements RemoteDatasource<Coffee> {
   }
 
   @override
-  Future<void> post(List<Coffee> items) async {
-  }
-
+  Future<void> post(List<Coffee> items) async {}
 }

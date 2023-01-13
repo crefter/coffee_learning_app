@@ -32,6 +32,5 @@ class CartRemoteDatasource implements RemoteDatasource<CoffeeItemOrder> {
   }
 
   @override
-  Future<void> post(List<CoffeeItemOrder> items) async {
-  }
+  Future<void> post(List<CoffeeItemOrder> items) async {}
 }
