@@ -39,6 +39,7 @@ class CoffeeRepositoryImpl implements CoffeeRepository {
 
   @override
   Future<void> saveFavorites(List<Coffee> favorites) async {
+    await favoritesRemoteDatasource.post(favorites);
     await favoritesLocalDatasource.save(favorites);
   }
 }

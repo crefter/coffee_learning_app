@@ -26,6 +26,7 @@ class CartRepositoryImpl implements CartRepository {
 
   @override
   Future<void> save(List<CoffeeItemOrder> items) async {
+    await remoteDatasource.post(items);
     await localDatasource.save(items);
   }
 }

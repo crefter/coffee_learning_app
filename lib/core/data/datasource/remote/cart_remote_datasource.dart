@@ -30,4 +30,8 @@ class CartRemoteDatasource implements RemoteDatasource<CoffeeItemOrder> {
       throw ReceivingCartException([], 'Ошибка получения корзины с сервера!');
     }
   }
+
+  @override
+  Future<void> post(List<CoffeeItemOrder> items) async {
+  }
 }

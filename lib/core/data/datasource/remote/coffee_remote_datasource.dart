@@ -36,4 +36,9 @@ class CoffeeRemoteDatasource implements RemoteDatasource<Coffee> {
       throw ReceivingAllCoffeeException([], 'Ошибка получения списка кофе!');
     }
   }
+
+  @override
+  Future<void> post(List<Coffee> items) async {
+  }
+
 }

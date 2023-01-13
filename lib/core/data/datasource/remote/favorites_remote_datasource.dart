@@ -29,4 +29,8 @@ class FavoritesRemoteDatasource implements RemoteDatasource<Coffee> {
       );
     }
   }
+
+  @override
+  Future<void> post(List<Coffee> items) async {
+  }
 }
