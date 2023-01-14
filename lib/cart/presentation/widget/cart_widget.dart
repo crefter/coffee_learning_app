@@ -17,8 +17,16 @@ class CartWidget extends StatelessWidget {
     return BlocBuilder<CartBloc, CartState>(
       builder: (context, state) {
         return state.when(
-          empty: () => const Center(
-            child: Text('Cart is empty!'),
+          empty: () => Center(
+            child: Column(
+              children: [
+                Text(
+                  'Cart is empty!',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                const SizedBox(height: 20),
+              ],
+            ),
           ),
           loading: () => const Center(
             child: CircularProgressIndicator(),
@@ -53,9 +61,9 @@ class CartWidget extends StatelessWidget {
               return ItemWidget<CoffeeItemOrder>(
                 onTapDeleteWidget: () async {
                   await Future.sync(
-                        () => context.read<CartBloc>().add(
-                      CartEvent.delete(index),
-                    ),
+                    () => context.read<CartBloc>().add(
+                          CartEvent.delete(index),
+                        ),
                   );
                 },
                 itemChild: CoffeeCartItemDescriptionWidget(
