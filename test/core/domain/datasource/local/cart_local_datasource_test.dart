@@ -44,7 +44,7 @@ void main() {
       const expected = <CoffeeItemOrder>[
         CoffeeItemOrder(
           coffee: Coffee(
-            1,
+            '1',
             CoffeeType.americano,
             'americano',
             'description',
@@ -72,7 +72,7 @@ void main() {
           const <CoffeeItemOrder>[
             CoffeeItemOrder(
               coffee: Coffee(
-                1,
+                '1',
                 CoffeeType.americano,
                 'americano',
                 'description',

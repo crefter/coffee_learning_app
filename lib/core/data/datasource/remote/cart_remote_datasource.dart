@@ -15,7 +15,7 @@ class CartRemoteDatasource implements RemoteDatasource<CoffeeItemOrder> {
       return const [
         CoffeeItemOrder(
           coffee: Coffee(
-              1,
+              '1',
               CoffeeType.americano,
               'americano',
               'description',

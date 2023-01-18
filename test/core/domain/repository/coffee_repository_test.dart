@@ -39,17 +39,17 @@ void main() {
       test('should return all coffees from coffeeRemoteDatasource', () async {
         when(coffeeRemoteDatasource.get()).thenAnswer(
           (_) async => const [
-            Coffee(1, CoffeeType.americano, 'name', 'description', 1, 1,
+            Coffee('1', CoffeeType.americano, 'name', 'description', 1, 1,
                 'image', 'currency'),
-            Coffee(2, CoffeeType.cappuccino, 'name', 'description', 1, 1,
+            Coffee('2', CoffeeType.cappuccino, 'name', 'description', 1, 1,
                 'image', 'currency'),
           ],
         );
         final actual = await coffeeRepository.getAll();
         const expected = [
-          Coffee(1, CoffeeType.americano, 'name', 'description', 1, 1, 'image',
+          Coffee('1', CoffeeType.americano, 'name', 'description', 1, 1, 'image',
               'currency'),
-          Coffee(2, CoffeeType.cappuccino, 'name', 'description', 1, 1, 'image',
+          Coffee('2', CoffeeType.cappuccino, 'name', 'description', 1, 1, 'image',
               'currency'),
         ];
         expect(actual, expected);
@@ -71,17 +71,17 @@ void main() {
           'from favoritesRemoteDatasource if no errors', () async {
         when(favoritesRemoteDatasource.get()).thenAnswer(
           (_) async => const [
-            Coffee(1, CoffeeType.americano, 'name', 'description', 1, 1,
+            Coffee('1', CoffeeType.americano, 'name', 'description', 1, 1,
                 'image', 'currency'),
-            Coffee(2, CoffeeType.cappuccino, 'name', 'description', 1, 1,
+            Coffee('2', CoffeeType.cappuccino, 'name', 'description', 1, 1,
                 'image', 'currency'),
           ],
         );
         final actual = await coffeeRepository.getFavorites();
         const expected = [
-          Coffee(1, CoffeeType.americano, 'name', 'description', 1, 1, 'image',
+          Coffee('1', CoffeeType.americano, 'name', 'description', 1, 1, 'image',
               'currency'),
-          Coffee(2, CoffeeType.cappuccino, 'name', 'description', 1, 1, 'image',
+          Coffee('2', CoffeeType.cappuccino, 'name', 'description', 1, 1, 'image',
               'currency'),
         ];
         expect(actual, expected);
@@ -95,9 +95,9 @@ void main() {
         );
         when(favoritesLocalDatasource.get()).thenAnswer(
           (_) async => const [
-            Coffee(1, CoffeeType.americano, 'name', 'description', 1, 1,
+            Coffee('1', CoffeeType.americano, 'name', 'description', 1, 1,
                 'image', 'currency'),
-            Coffee(2, CoffeeType.cappuccino, 'name', 'description', 1, 1,
+            Coffee('2', CoffeeType.cappuccino, 'name', 'description', 1, 1,
                 'image', 'currency'),
           ],
         );

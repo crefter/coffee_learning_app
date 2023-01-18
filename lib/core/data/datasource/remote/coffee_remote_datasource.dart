@@ -12,7 +12,7 @@ class CoffeeRemoteDatasource implements RemoteDatasource<Coffee> {
     if (nextInt < 800) {
       return const <Coffee>[
         Coffee(
-          1,
+          '1',
           CoffeeType.cappuccino,
           'Drizzled With Caramel',
           'A single espresso shot poured into hot foamy milk, with the surface topped with mildly sweetened cocoa powder and drizzled with scrumptious caramel syrup',
@@ -22,7 +22,7 @@ class CoffeeRemoteDatasource implements RemoteDatasource<Coffee> {
           '\u{20BD}',
         ),
         Coffee(
-          2,
+          '2',
           CoffeeType.americano,
           'Americano With Caramel',
           'A single espresso shot poured into hot foamy milk, with the surface topped with mildly sweetened cocoa powder and drizzled with scrumptious caramel syrup',

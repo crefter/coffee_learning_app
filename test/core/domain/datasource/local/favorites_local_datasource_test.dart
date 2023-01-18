@@ -32,7 +32,7 @@ void main() {
                 '"price":1.0,"rating":1.0,"image":"/image","currency":"curr"}]');
         final actual = await favLocalDatasource.get();
         const expected = <Coffee>[
-          Coffee(1, CoffeeType.latte, 'name', 'desc', 1, 1, '/image', 'curr'),
+          Coffee('1', CoffeeType.latte, 'name', 'desc', 1, 1, '/image', 'curr'),
         ];
         verify(sharedPreferences.getString('fav')).called(1);
         expect(actual, expected);
@@ -54,7 +54,7 @@ void main() {
         ).thenAnswer((_) async => true);
         await favLocalDatasource.save([
           const Coffee(
-            1,
+            '1',
             CoffeeType.latte,
             'name',
             'desc',

@@ -34,15 +34,15 @@ void main() {
         when(remoteDatasource.get()).thenAnswer(
           (_) async => const [
             CoffeeItemOrder(
-                coffee: Coffee(1, CoffeeType.cappuccino, 'cappuccino', 'coffee',
+                coffee: Coffee('1', CoffeeType.cappuccino, 'cappuccino', 'coffee',
                     1, 1, 'image', 'currency'),
                 count: 2),
             CoffeeItemOrder(
-                coffee: Coffee(2, CoffeeType.americano, 'americano', 'coffee',
+                coffee: Coffee('2', CoffeeType.americano, 'americano', 'coffee',
                     1, 1, 'image', 'currency'),
                 count: 1),
             CoffeeItemOrder(
-                coffee: Coffee(3, CoffeeType.cappuccino, 'cappuccino',
+                coffee: Coffee('3', CoffeeType.cappuccino, 'cappuccino',
                     'another coffee', 2, 1, 'image', 'currency'),
                 count: 3),
           ],
@@ -50,15 +50,15 @@ void main() {
         final actual = await repository.get();
         const expected = [
           CoffeeItemOrder(
-              coffee: Coffee(1, CoffeeType.cappuccino, 'cappuccino', 'coffee',
+              coffee: Coffee('1', CoffeeType.cappuccino, 'cappuccino', 'coffee',
                   1, 1, 'image', 'currency'),
               count: 2),
           CoffeeItemOrder(
-              coffee: Coffee(2, CoffeeType.americano, 'americano', 'coffee', 1,
+              coffee: Coffee('2', CoffeeType.americano, 'americano', 'coffee', 1,
                   1, 'image', 'currency'),
               count: 1),
           CoffeeItemOrder(
-              coffee: Coffee(3, CoffeeType.cappuccino, 'cappuccino',
+              coffee: Coffee('3', CoffeeType.cappuccino, 'cappuccino',
                   'another coffee', 2, 1, 'image', 'currency'),
               count: 3),
         ];
@@ -72,15 +72,15 @@ void main() {
         when(localDatasource.get()).thenAnswer(
           (_) async => const [
             CoffeeItemOrder(
-                coffee: Coffee(1, CoffeeType.cappuccino, 'cappuccino', 'coffee',
+                coffee: Coffee('1', CoffeeType.cappuccino, 'cappuccino', 'coffee',
                     1, 1, 'image', 'currency'),
                 count: 2),
             CoffeeItemOrder(
-                coffee: Coffee(2, CoffeeType.americano, 'americano', 'coffee',
+                coffee: Coffee('2', CoffeeType.americano, 'americano', 'coffee',
                     1, 1, 'image', 'currency'),
                 count: 1),
             CoffeeItemOrder(
-                coffee: Coffee(3, CoffeeType.cappuccino, 'cappuccino',
+                coffee: Coffee('3', CoffeeType.cappuccino, 'cappuccino',
                     'another coffee', 2, 1, 'image', 'currency'),
                 count: 3),
           ],

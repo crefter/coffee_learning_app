@@ -100,7 +100,7 @@ void main() {
       expect(cartBloc.state, empty);
       final mock1 = MockCoffeeItemOrder();
       final mock2 = MockCoffeeItemOrder();
-      when(mock2.coffee).thenAnswer((_) => const Coffee(1, CoffeeType.espresso,
+      when(mock2.coffee).thenAnswer((_) => const Coffee('1', CoffeeType.espresso,
           'name', 'description', 1, 1, 'image', 'curr'));
       cartBloc.add(CartEvent.add(mock1));
       cartBloc.add(CartEvent.add(mock2));
@@ -116,11 +116,11 @@ void main() {
       final states = <CartState>[];
       expect(cartBloc.state, empty);
       const mock1 = CoffeeItemOrder(
-          coffee: Coffee(1, CoffeeType.espresso, 'name', 'description', 1, 1,
+          coffee: Coffee('1', CoffeeType.espresso, 'name', 'description', 1, 1,
               'image', 'curr'),
           count: 1);
       const mock2 = CoffeeItemOrder(
-          coffee: Coffee(1, CoffeeType.espresso, 'name', 'description', 1, 1,
+          coffee: Coffee('1', CoffeeType.espresso, 'name', 'description', 1, 1,
               'image', 'curr'),
           count: 1);
       cartBloc.add(const CartEvent.add(mock1));
@@ -136,7 +136,7 @@ void main() {
       final states = <CartState>[];
       expect(cartBloc.state, empty);
       const mock1 = CoffeeItemOrder(
-          coffee: Coffee(1, CoffeeType.espresso, 'name', 'description', 1, 1,
+          coffee: Coffee('1', CoffeeType.espresso, 'name', 'description', 1, 1,
               'image', 'curr'),
           count: 1);
       cartBloc.add(const CartEvent.add(mock1));
@@ -153,11 +153,11 @@ void main() {
       final states = <CartState>[];
       expect(cartBloc.state, empty);
       const mock1 = CoffeeItemOrder(
-          coffee: Coffee(1, CoffeeType.espresso, 'name', 'description', 1, 1,
+          coffee: Coffee('1', CoffeeType.espresso, 'name', 'description', 1, 1,
               'image', 'curr'),
           count: 1);
       const mock2 = CoffeeItemOrder(
-          coffee: Coffee(2, CoffeeType.espresso, 'name', 'description', 1, 1,
+          coffee: Coffee('2', CoffeeType.espresso, 'name', 'description', 1, 1,
               'image', 'curr'),
           count: 1);
       cartBloc.add(const CartEvent.add(mock1));
@@ -175,7 +175,7 @@ void main() {
       final states = <CartState>[];
       expect(cartBloc.state, empty);
       const mock1 = CoffeeItemOrder(
-          coffee: Coffee(1, CoffeeType.espresso, 'name', 'description', 1, 1,
+          coffee: Coffee('1', CoffeeType.espresso, 'name', 'description', 1, 1,
               'image', 'curr'),
           count: 1);
       cartBloc.add(const CartEvent.add(mock1));
@@ -192,7 +192,7 @@ void main() {
       final states = <CartState>[];
       expect(cartBloc.state, empty);
       const mock1 = CoffeeItemOrder(
-          coffee: Coffee(1, CoffeeType.espresso, 'name', 'description', 1, 1,
+          coffee: Coffee('1', CoffeeType.espresso, 'name', 'description', 1, 1,
               'image', 'curr'),
           count: 1);
       cartBloc.add(const CartEvent.add(mock1));
@@ -208,7 +208,7 @@ void main() {
       final states = <CartState>[];
       expect(cartBloc.state, empty);
       const mock1 = CoffeeItemOrder(
-          coffee: Coffee(1, CoffeeType.espresso, 'name', 'description', 1, 1,
+          coffee: Coffee('1', CoffeeType.espresso, 'name', 'description', 1, 1,
               'image', 'curr'),
           count: 1);
       cartBloc.add(const CartEvent.add(mock1));
@@ -226,7 +226,7 @@ void main() {
       final states = <CartState>[];
       expect(cartBloc.state, empty);
       const mock1 = CoffeeItemOrder(
-          coffee: Coffee(1, CoffeeType.espresso, 'name', 'description', 1, 1,
+          coffee: Coffee('1', CoffeeType.espresso, 'name', 'description', 1, 1,
               'image', 'curr'),
           count: 1);
       cartBloc.add(const CartEvent.add(mock1));
@@ -244,7 +244,7 @@ void main() {
       final states = <CartState>[];
       expect(cartBloc.state, empty);
       const mock1 = CoffeeItemOrder(
-          coffee: Coffee(1, CoffeeType.espresso, 'name', 'description', 1, 1,
+          coffee: Coffee('1', CoffeeType.espresso, 'name', 'description', 1, 1,
               'image', 'curr'),
           count: 1);
       cartBloc.add(const CartEvent.add(mock1));

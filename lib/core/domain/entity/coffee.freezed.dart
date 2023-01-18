@@ -20,7 +20,7 @@ Coffee _$CoffeeFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Coffee {
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   CoffeeType get type => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $CoffeeCopyWith<$Res> {
       _$CoffeeCopyWithImpl<$Res, Coffee>;
   @useResult
   $Res call(
-      {int id,
+      {String id,
       CoffeeType type,
       String name,
       String description,
@@ -76,7 +76,7 @@ class _$CoffeeCopyWithImpl<$Res, $Val extends Coffee>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -116,7 +116,7 @@ abstract class _$$_CoffeeCopyWith<$Res> implements $CoffeeCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int id,
+      {String id,
       CoffeeType type,
       String name,
       String description,
@@ -149,7 +149,7 @@ class __$$_CoffeeCopyWithImpl<$Res>
       null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -192,7 +192,7 @@ class _$_Coffee implements _Coffee {
       _$$_CoffeeFromJson(json);
 
   @override
-  final int id;
+  final String id;
   @override
   final CoffeeType type;
   @override
@@ -251,7 +251,7 @@ class _$_Coffee implements _Coffee {
 
 abstract class _Coffee implements Coffee {
   const factory _Coffee(
-      final int id,
+      final String id,
       final CoffeeType type,
       final String name,
       final String description,
@@ -263,7 +263,7 @@ abstract class _Coffee implements Coffee {
   factory _Coffee.fromJson(Map<String, dynamic> json) = _$_Coffee.fromJson;
 
   @override
-  int get id;
+  String get id;
   @override
   CoffeeType get type;
   @override

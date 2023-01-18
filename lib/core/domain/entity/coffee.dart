@@ -20,7 +20,7 @@ enum CoffeeType {
 
 @freezed
 class Coffee with _$Coffee {
-  const factory Coffee(int id, CoffeeType type, String name, String description, double price, double rating,
+  const factory Coffee(String id, CoffeeType type, String name, String description, double price, double rating,
       String image, String currency) = _Coffee;
 
   factory Coffee.fromJson(Map<String, dynamic> json) =>
