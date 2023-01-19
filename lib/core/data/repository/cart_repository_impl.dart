@@ -1,12 +1,12 @@
 import 'package:learning/core/data/datasource/local/local_datasource.dart';
-import 'package:learning/core/data/datasource/remote/remote_datasource.dart';
+import 'package:learning/core/data/datasource/remote/pgd_remote_datasource.dart';
 import 'package:learning/core/data/exception/receiving_cart_exception.dart';
 import 'package:learning/core/domain/entity/coffee_item_order.dart';
 import 'package:learning/core/domain/repository/cart_repository.dart';
 
 class CartRepositoryImpl implements CartRepository {
   final LocalDatasource<CoffeeItemOrder> localDatasource;
-  final RemoteDatasource<CoffeeItemOrder> remoteDatasource;
+  final PGDRemoteDatasource<CoffeeItemOrder> remoteDatasource;
 
   CartRepositoryImpl({
     required this.localDatasource,
@@ -28,5 +28,10 @@ class CartRepositoryImpl implements CartRepository {
   Future<void> save(List<CoffeeItemOrder> items) async {
     await remoteDatasource.post(items);
     await localDatasource.save(items);
+  }
+
+  @override
+  Future<void> delete(CoffeeItemOrder item) async {
+    await remoteDatasource.delete(item);
   }
 }

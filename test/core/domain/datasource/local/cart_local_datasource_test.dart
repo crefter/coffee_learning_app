@@ -88,7 +88,7 @@ void main() {
         );
         verify(
           await sharedPreferences.setString('cart',
-              '[{"coffee":{"id":1,"type":"Americano","name":"americano","description":"description","price":1.0,"rating":1.0,"image":"/image","currency":"curr"},"milk":"Oat Milk","count":2}]'),
+              '[{"coffee":{"id":"1","type":"Americano","name":"americano","description":"description","price":1.0,"rating":1.0,"image":"/image","currency":"curr"},"milk":"Oat Milk","count":2}]'),
         ).called(1);
       });
     });

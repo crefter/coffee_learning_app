@@ -62,13 +62,16 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       emit(const CartState.empty());
       return;
     }
-    items.removeAt(event.index);
+    final index = event.index;
+    final item = items[index].copyWith();
+    items.removeAt(index);
     if (items.isEmpty) {
       emit(const CartState.empty());
     } else {
       emit(CartState.loaded(items));
     }
     await cartRepository.save(items);
+    await cartRepository.delete(item);
   }
 
   Future<void> _onLoad(_CartEventLoad event, Emitter<CartState> emit) async {
@@ -82,7 +85,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         await cartRepository.save(items);
       }
     } on ReceivingCartException catch (e) {
-       emit(CartState.error(e.items, e.message));
+       emit(CartState.error(e.items, e.message.toString()));
     }
   }
 
