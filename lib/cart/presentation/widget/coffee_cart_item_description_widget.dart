@@ -53,9 +53,23 @@ class CoffeeCartItemDescriptionWidget extends StatelessWidget {
                   style: theme.textTheme.labelMedium!.copyWith(fontSize: 12),
                 ),
                 const SizedBox(height: 8),
-                Text(
-                  '${coffeeItemOrder.coffee.currency}${coffeeItemOrder.coffee.price}',
-                  style: theme.textTheme.titleLarge,
+                Row(
+                  children: [
+                    Icon(
+                      IconData(
+                        int.parse(
+                          coffeeItemOrder.coffee.currency,
+                          radix: 16,
+                        ),
+                      ),
+                      size: 16,
+                      color: theme.textTheme.titleLarge!.color,
+                    ),
+                    Text(
+                      '${coffeeItemOrder.coffee.price}',
+                      style: theme.textTheme.titleLarge,
+                    ),
+                  ],
                 ),
               ],
             ),

@@ -1,4 +1,5 @@
 import 'package:learning/core/data/datasource/local/local_datasource.dart';
+import 'package:learning/core/data/datasource/remote/post_remote_datasource.dart';
 import 'package:learning/core/data/datasource/remote/remote_datasource.dart';
 import 'package:learning/core/data/exception/receiving_all_coffee_exception.dart';
 import 'package:learning/core/data/exception/receiving_favorites_exception.dart';
@@ -7,7 +8,7 @@ import 'package:learning/core/domain/repository/coffee_repository.dart';
 
 class CoffeeRepositoryImpl implements CoffeeRepository {
   final RemoteDatasource<Coffee> coffeeRemoteDatasource;
-  final RemoteDatasource<Coffee> favoritesRemoteDatasource;
+  final PostRemoteDatasource<Coffee> favoritesRemoteDatasource;
   final LocalDatasource<Coffee> favoritesLocalDatasource;
 
   CoffeeRepositoryImpl(
@@ -38,8 +39,12 @@ class CoffeeRepositoryImpl implements CoffeeRepository {
   }
 
   @override
-  Future<void> saveFavorites(List<Coffee> favorites) async {
-    await favoritesRemoteDatasource.post(favorites);
-    await favoritesLocalDatasource.save(favorites);
+  Future<void> saveFavorites(List<Coffee> favorites, bool onlyLocal) async {
+    if (onlyLocal) {
+      await favoritesLocalDatasource.save(favorites);
+    } else {
+      await favoritesLocalDatasource.save(favorites);
+      await favoritesRemoteDatasource.post(favorites);
+    }
   }
 }

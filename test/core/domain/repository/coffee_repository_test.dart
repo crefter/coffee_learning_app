@@ -3,6 +3,7 @@ import 'package:learning/core/data/datasource/local/favorites_local_datasource.d
 import 'package:learning/core/data/datasource/local/local_datasource.dart';
 import 'package:learning/core/data/datasource/remote/coffee_remote_datasource.dart';
 import 'package:learning/core/data/datasource/remote/favorites_remote_datasource.dart';
+import 'package:learning/core/data/datasource/remote/post_remote_datasource.dart';
 import 'package:learning/core/data/datasource/remote/remote_datasource.dart';
 import 'package:learning/core/data/exception/receiving_all_coffee_exception.dart';
 import 'package:learning/core/data/exception/receiving_favorites_exception.dart';
@@ -22,7 +23,7 @@ import 'coffee_repository_test.mocks.dart';
 void main() {
   late final CoffeeRepository coffeeRepository;
   late final RemoteDatasource<Coffee> coffeeRemoteDatasource;
-  late final RemoteDatasource<Coffee> favoritesRemoteDatasource;
+  late final PostRemoteDatasource<Coffee> favoritesRemoteDatasource;
   late final LocalDatasource<Coffee> favoritesLocalDatasource;
   setUpAll(() {
     coffeeRemoteDatasource = MockCoffeeRemoteDatasource();
@@ -115,10 +116,8 @@ void main() {
     group('saveFavorites()', () {
       test('should call save() localFavoriteDatasource', () async {
         when(favoritesLocalDatasource.save([])).thenAnswer((_) async {});
-        when(favoritesRemoteDatasource.post([])).thenAnswer((_) async {});
-        await coffeeRepository.saveFavorites([]);
+        await coffeeRepository.saveFavorites([], true);
         verify(favoritesLocalDatasource.save([])).called(1);
-        verify(favoritesRemoteDatasource.post([])).called(1);
       });
     });
   });
