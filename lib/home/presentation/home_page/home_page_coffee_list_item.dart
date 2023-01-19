@@ -79,7 +79,7 @@ class HomePageCoffeeListItem extends StatelessWidget {
                   );
                 },
                 child: HomePageCoffeeListItemPrice(
-                  currency: coffee.currency,
+                  curr: coffee.currency,
                   price: coffee.price,
                   onTap: () {
                     context.read<CartBloc>().add(

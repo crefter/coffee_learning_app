@@ -6,12 +6,12 @@ class HomePageCoffeeListItemPrice extends StatelessWidget {
 
   const HomePageCoffeeListItemPrice({
     Key? key,
-    required this.currency,
+    required this.curr,
     required this.price,
     required this.onTap,
   }) : super(key: key);
 
-  final String currency;
+  final String curr;
   final double price;
 
   @override
@@ -30,9 +30,15 @@ class HomePageCoffeeListItemPrice extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    currency,
-                    style: theme.textTheme.titleLarge,
+                  Icon(
+                    IconData(
+                      int.parse(
+                        curr,
+                        radix: 16,
+                      ),
+                    ),
+                    size: 16,
+                    color: theme.textTheme.labelLarge!.color,
                   ),
                   Text(
                     '$price',
