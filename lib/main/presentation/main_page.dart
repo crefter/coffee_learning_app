@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learning/core/data/datasource/local/cart_local_datasource.dart';
@@ -32,8 +33,8 @@ class _MainPageState extends State<MainPage> {
         if (snapshot.hasData) {
           final sharedPreferences = snapshot.data!;
           final CoffeeRepository coffeeRepository = CoffeeRepositoryImpl(
-            CoffeeRemoteDatasource(),
-            FavoritesRemoteDatasource(),
+            CoffeeRemoteDatasource(FirebaseFirestore.instance),
+            FavoritesRemoteDatasource(FirebaseFirestore.instance),
             FavoritesLocalDatasource(sharedPreferences),
           );
           return MultiBlocProvider(
@@ -52,7 +53,9 @@ class _MainPageState extends State<MainPage> {
                 create: (_) => CartBloc(
                   cartRepository: CartRepositoryImpl(
                     localDatasource: CartLocalDatasource(sharedPreferences),
-                    remoteDatasource: CartRemoteDatasource(),
+                    remoteDatasource: CartRemoteDatasource(
+                      FirebaseFirestore.instance,
+                    ),
                   ),
                 )..add(const CartEvent.load()),
                 lazy: false,
