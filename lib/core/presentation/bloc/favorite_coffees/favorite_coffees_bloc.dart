@@ -33,7 +33,7 @@ class FavoriteCoffeesBloc
             final List<Coffee> favorites =
                 await coffeeRepository.getFavorites();
             emit(FavoriteCoffeesState.loaded(favorites));
-            await coffeeRepository.saveFavorites(favorites);
+            await coffeeRepository.saveFavorites(favorites, true);
           } on ReceivingFavoritesException catch (e) {
             emit(FavoriteCoffeesState.error(e.items, e.message));
           }
@@ -51,7 +51,7 @@ class FavoriteCoffeesBloc
         emit(const FavoriteCoffeesState.loading());
         final favorites = [event.coffee];
         emit(FavoriteCoffeesState.loaded(favorites));
-        await coffeeRepository.saveFavorites(favorites);
+        await coffeeRepository.saveFavorites(favorites, false);
       },
       loaded: (favorites) async {
         emit(const FavoriteCoffeesState.loading());
@@ -66,7 +66,7 @@ class FavoriteCoffeesBloc
         else {
           emit(FavoriteCoffeesState.loaded(newFavorites));
         }
-        await coffeeRepository.saveFavorites(newFavorites);
+        await coffeeRepository.saveFavorites(newFavorites, false);
       },
     );
   }

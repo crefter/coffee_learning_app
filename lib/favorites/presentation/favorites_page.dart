@@ -34,9 +34,9 @@ class FavoritesPage extends StatelessWidget {
                           style: theme.textTheme.titleMedium,
                         ),
                       ),
-                      loading: () => const SliverToBoxAdapter(
-                        child: Center(
-                          child: CircularProgressIndicator(),
+                      loading: () => const Center(
+                        child: CircularProgressIndicator(
+                          color: Colors.red,
                         ),
                       ),
                       loaded: (favorites) => ListView.builder(
@@ -58,6 +58,7 @@ class FavoritesPage extends StatelessWidget {
                         },
                       ),
                       error: (favorites, _) => ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: favorites.length,
                         itemBuilder: (context, index) {

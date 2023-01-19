@@ -1,35 +1,59 @@
-import 'dart:math';
-
-import 'package:learning/core/data/datasource/remote/remote_datasource.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:learning/core/data/datasource/remote/post_remote_datasource.dart';
 import 'package:learning/core/data/exception/receiving_favorites_exception.dart';
 import 'package:learning/core/domain/entity/coffee.dart';
 
-class FavoritesRemoteDatasource implements RemoteDatasource<Coffee> {
+class FavoritesRemoteDatasource implements PostRemoteDatasource<Coffee> {
+  final FirebaseFirestore db;
+
+  FavoritesRemoteDatasource(this.db);
+
   @override
   Future<List<Coffee>> get() async {
-    Random rand = Random();
-    int nextInt = rand.nextInt(1000);
-    if (nextInt < 800) {
-      return const <Coffee>[
-        Coffee(
-          '1',
-          CoffeeType.cappuccino,
-          'Drizzled With Caramel',
-          'A single espresso shot poured into hot foamy milk, with the surface topped with mildly sweetened cocoa powder and drizzled with scrumptious caramel syrup',
-          249,
-          4.5,
-          'https://www.talepse.com/pictures/ab17173aa7ff471b69c21c2b4d866a62.jpg',
-          '\u{20BD}',
-        ),
-      ];
-    } else {
-      throw ReceivingFavoritesException(
-        [],
-        'Ошибка получения избранных с сервера!',
-      );
+    try {
+      final List<Coffee> result = [];
+      await db
+          .collection('coffees')
+          .where('isFavorite', isEqualTo: true)
+          .get()
+          .then((event) {
+        for (var doc in event.docs) {
+          final map = doc.data();
+          map['id'] = doc.reference.id;
+          final Coffee coffee = Coffee.fromJson(map);
+          result.add(coffee);
+        }
+      });
+      return result;
+    } catch (_) {
+      throw ReceivingFavoritesException([], 'Ошибка получения избранных кофе!');
     }
   }
 
   @override
-  Future<void> post(List<Coffee> items) async {}
+  Future<void> post(List<Coffee> items) async {
+    try {
+      await db.runTransaction((transaction) async {
+        await db.collection('coffees').get().then((event) {
+          for (var doc in event.docs) {
+            final data = doc.data();
+            bool isFound = false;
+            for (var item in items) {
+              if (item.description == data['description'] &&
+                  item.name == data['name']) {
+                doc.reference.update({'isFavorite': true});
+                isFound = true;
+                break;
+              }
+            }
+            if (!isFound) {
+              doc.reference.update({'isFavorite': false});
+            }
+          }
+        });
+      });
+    } catch (_) {
+      throw ReceivingFavoritesException([], 'Ошибка записи избранных кофе!');
+    }
+  }
 }
