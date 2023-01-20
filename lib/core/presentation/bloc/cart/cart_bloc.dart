@@ -63,7 +63,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       return;
     }
     final index = event.index;
-    final item = items[index].copyWith();
+    final item = items[index];
     items.removeAt(index);
     if (items.isEmpty) {
       emit(const CartState.empty());
