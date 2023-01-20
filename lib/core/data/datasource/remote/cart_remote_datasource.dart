@@ -40,6 +40,9 @@ class CartRemoteDatasource implements PGDRemoteDatasource<CoffeeItemOrder> {
 
   @override
   Future<void> post(List<CoffeeItemOrder> items) async {
+    if (items.isEmpty) {
+      return;
+    }
     for (var item in items) {
       final json = {
         'coffee': item.coffee.id,

@@ -4,15 +4,15 @@ import 'package:learning/core/data/exception/receiving_favorites_exception.dart'
 import 'package:learning/core/domain/entity/coffee.dart';
 
 class FavoritesRemoteDatasource implements PostRemoteDatasource<Coffee> {
-  final FirebaseFirestore db;
+  final FirebaseFirestore _db;
 
-  FavoritesRemoteDatasource(this.db);
+  FavoritesRemoteDatasource(this._db);
 
   @override
   Future<List<Coffee>> get() async {
     try {
       final List<Coffee> result = [];
-      await db
+      await _db
           .collection('coffees')
           .where('isFavorite', isEqualTo: true)
           .get()
@@ -32,9 +32,12 @@ class FavoritesRemoteDatasource implements PostRemoteDatasource<Coffee> {
 
   @override
   Future<void> post(List<Coffee> items) async {
+    if (items.isEmpty) {
+      return;
+    }
     try {
-      await db.runTransaction((transaction) async {
-        await db.collection('coffees').get().then((event) {
+      await _db.runTransaction((transaction) async {
+        await _db.collection('coffees').get().then((event) {
           for (var doc in event.docs) {
             final data = doc.data();
             bool isFound = false;
