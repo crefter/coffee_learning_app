@@ -28,7 +28,7 @@ void main() {
     test('return list of coffee item orders if saved json', () async {
       when(sharedPreferences.getString('cart')).thenReturn('[{'
           '"coffee": {'
-          ' "id": 1,'
+          ' "id": "1",'
           '"type": "Americano",'
           '"name": "americano",'
           '"description": "description",'
