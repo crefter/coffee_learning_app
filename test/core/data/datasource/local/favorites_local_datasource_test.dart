@@ -28,8 +28,8 @@ void main() {
       });
       test('should return list of coffees if saved json', () async {
         when(sharedPreferences.getString('fav')).thenReturn(
-            '[{"id":1,"type":"Latte","name":"name","description":"desc",'
-                '"price":1.0,"rating":1.0,"image":"/image","currency":"curr"}]');
+            '[{"id":"1","type":"Latte","name":"name","description":"desc",'
+            '"price":1.0,"rating":1.0,"image":"/image","currency":"curr"}]');
         final actual = await favLocalDatasource.get();
         const expected = <Coffee>[
           Coffee('1', CoffeeType.latte, 'name', 'desc', 1, 1, '/image', 'curr'),
@@ -49,7 +49,7 @@ void main() {
         when(
           sharedPreferences.setString(
               'fav',
-              '[{"id":1,"type":"Latte","name":"name","description":"desc",'
+              '[{"id":"1","type":"Latte","name":"name","description":"desc",'
                   '"price":1.0,"rating":1.0,"image":"/image","currency":"curr"}]'),
         ).thenAnswer((_) async => true);
         await favLocalDatasource.save([
@@ -64,8 +64,11 @@ void main() {
             'curr',
           ),
         ]);
-        verify(sharedPreferences.setString('fav', '[{"id":1,"type":"Latte","name":"name","description":"desc",'
-            '"price":1.0,"rating":1.0,"image":"/image","currency":"curr"}]')).called(1);
+        verify(sharedPreferences.setString(
+                'fav',
+                '[{"id":"1","type":"Latte","name":"name","description":"desc",'
+                    '"price":1.0,"rating":1.0,"image":"/image","currency":"curr"}]'))
+            .called(1);
       });
     });
   });
