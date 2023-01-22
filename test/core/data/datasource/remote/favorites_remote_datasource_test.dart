@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:learning/core/data/datasource/remote/favorites_remote_datasource.dart';
+import 'package:learning/main/data/datasource/remote/favorites_remote_datasource.dart';
 import 'package:learning/core/data/exception/receiving_favorites_exception.dart';
 import 'package:learning/core/domain/entity/coffee.dart';
 

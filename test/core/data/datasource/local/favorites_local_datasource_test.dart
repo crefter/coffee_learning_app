@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:learning/core/data/datasource/local/favorites_local_datasource.dart';
 import 'package:learning/core/domain/entity/coffee.dart';
+import 'package:learning/main/data/datasource/local/favorites_local_datasource.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:shared_preferences/shared_preferences.dart';

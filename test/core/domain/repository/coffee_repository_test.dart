@@ -1,15 +1,15 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:learning/core/data/datasource/local/favorites_local_datasource.dart';
 import 'package:learning/core/data/datasource/local/local_datasource.dart';
-import 'package:learning/core/data/datasource/remote/coffee_remote_datasource.dart';
-import 'package:learning/core/data/datasource/remote/favorites_remote_datasource.dart';
+import 'package:learning/main/data/datasource/local/favorites_local_datasource.dart';
+import 'package:learning/main/data/datasource/remote/coffee_remote_datasource.dart';
+import 'package:learning/main/data/datasource/remote/favorites_remote_datasource.dart';
 import 'package:learning/core/data/datasource/remote/post_remote_datasource.dart';
 import 'package:learning/core/data/datasource/remote/remote_datasource.dart';
 import 'package:learning/core/data/exception/receiving_all_coffee_exception.dart';
 import 'package:learning/core/data/exception/receiving_favorites_exception.dart';
-import 'package:learning/core/data/repository/coffee_repositoty_impl.dart';
 import 'package:learning/core/domain/entity/coffee.dart';
 import 'package:learning/core/domain/repository/coffee_repository.dart';
+import 'package:learning/main/data/repository/coffee_repositoty_impl.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
