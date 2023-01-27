@@ -18,7 +18,7 @@ class HomePageCoffeeList extends StatelessWidget {
       child: BlocBuilder<CoffeeListBloc, CoffeeListState>(
         builder: (context, state) {
           return state.maybeWhen(
-            orElse: () => const Placeholder(),
+            orElse: () => const CircularProgressIndicator(),
             loaded: (_, list) => GridView.builder(
               itemCount: list.length,
               itemBuilder: (context, index) {

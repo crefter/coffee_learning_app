@@ -5,7 +5,6 @@ import 'package:learning/core/presentation/coffee_details_page/coffee_details_pa
 import 'package:learning/favorites/presentation/favorites_page.dart';
 import 'package:learning/home/presentation/home_page/home_page.dart';
 import 'package:learning/main/presentation/main_page.dart';
-import 'package:learning/notifications/presentation/notifications_page.dart';
 
 @MaterialAutoRouter(replaceInRouteName: 'Page,Route', routes: <AutoRoute>[
   AutoRoute(
@@ -35,10 +34,11 @@ import 'package:learning/notifications/presentation/notifications_page.dart';
         path: 'fav',
         page: FavoritesPage,
       ),
-      AutoRoute(
-        path: 'notifies',
-        page: NotificationsPage,
-      ),
+      // Was in UI design
+      // AutoRoute(
+      //   path: 'notifies',
+      //   page: NotificationsPage,
+      // ),
     ],
   ),
 ])

@@ -98,7 +98,7 @@ class _MainPageState extends State<MainPage> {
                     HomeEmptyRoute(),
                     CartRoute(),
                     FavoritesRoute(),
-                    NotificationsRoute(),
+                    //NotificationsRoute(),
                   ],
                   bottomNavigationBuilder: (_, tabsRouter) {
                     return BottomNavigationBar(
@@ -152,13 +152,14 @@ class _MainPageState extends State<MainPage> {
                             size: 26,
                           ),
                         ),
-                        BottomNavigationBarItem(
-                          label: 'Notifications',
-                          icon: Icon(
-                            Icons.notifications,
-                            size: 26,
-                          ),
-                        ),
+                        // Was in UI design
+                        // BottomNavigationBarItem(
+                        //   label: 'Notifications',
+                        //   icon: Icon(
+                        //     Icons.notifications,
+                        //     size: 26,
+                        //   ),
+                        // ),
                       ],
                     );
                   },
