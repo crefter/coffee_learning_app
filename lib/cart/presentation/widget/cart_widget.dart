@@ -29,7 +29,9 @@ class CartWidget extends StatelessWidget {
             ),
           ),
           loading: () => const Center(
-            child: CircularProgressIndicator(),
+            child: CircularProgressIndicator(
+              backgroundColor: Colors.red,
+            ),
           ),
           loaded: (items) => ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
