@@ -61,8 +61,11 @@ class CoffeeListBloc extends Bloc<CoffeeListEvent, CoffeeListState> {
     _CoffeeListEventSearch event,
     Emitter<CoffeeListState> emit,
   ) async {
+    if (state is ErrorCoffeeListState) {
+      return;
+    }
     final queryCoffees = state.maybeWhen(
-      orElse: () => <Coffee>[],
+      orElse: () => null,
       loaded: (_, __, list) => list,
     );
     final coffees = state.maybeWhen(
@@ -73,6 +76,9 @@ class CoffeeListBloc extends Bloc<CoffeeListEvent, CoffeeListState> {
       orElse: () => <Coffee>[],
       loaded: (_, filteredCoffees, __) => filteredCoffees,
     );
+    if (coffees.isEmpty) {
+      return;
+    }
     if (event.query.length < 3) {
       if (queryCoffees != null) {
         emit(CoffeeListState.loaded(coffees, filteredCoffees, null));

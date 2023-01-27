@@ -92,5 +92,135 @@ void main() {
       final expected = [empty, loading, error, loaded];
       expect(states, expected);
     });
+    test(
+        'should return [empty, loading, error, loaded] '
+        'when startLoading event with errors then typeSelected event',
+        () async {
+      when(coffeeRepository.getAll()).thenAnswer(
+        (_) async => throw ReceivingAllCoffeeException([], 'message'),
+      );
+      final states = <CoffeeListState>[];
+      states.add(bloc.state);
+      bloc.stream.listen((state) => states.add(state));
+      bloc.add(const CoffeeListEvent.startLoading());
+      bloc.add(const CoffeeListEvent.typeSelected(CoffeeType.americano));
+      await Future.delayed(Duration.zero);
+      final expected = [empty, loading, error, loaded];
+      expect(states, expected);
+    });
+    test(
+        'should return [empty] '
+        'when search event with query is empty', () async {
+      final states = <CoffeeListState>[];
+      states.add(bloc.state);
+      bloc.stream.listen((state) => states.add(state));
+      bloc.add(const CoffeeListEvent.search(''));
+      await Future.delayed(Duration.zero);
+      final expected = [empty];
+      expect(states, expected);
+    });
+    test(
+        'should return [empty] '
+        'when search event with coffees is empty', () async {
+      final states = <CoffeeListState>[];
+      states.add(bloc.state);
+      bloc.stream.listen((state) => states.add(state));
+      bloc.add(const CoffeeListEvent.search('query'));
+      await Future.delayed(Duration.zero);
+      final expected = [empty];
+      expect(states, expected);
+    });
+    test(
+        'should return [empty, loading, error] '
+        'when search event after startLoading event done with error', () async {
+      when(coffeeRepository.getAll()).thenThrow(
+        ReceivingAllCoffeeException([], 'message'),
+      );
+      final states = <CoffeeListState>[];
+      states.add(bloc.state);
+      bloc.stream.listen((state) => states.add(state));
+      bloc.add(const CoffeeListEvent.startLoading());
+      bloc.add(const CoffeeListEvent.search('query'));
+      await Future.delayed(Duration.zero);
+      final expected = [empty, loading, error];
+      expect(states, expected);
+    });
+    test(
+        'should return [empty, loading, loaded, loading, loaded] '
+        'and length = 1 when startLoading event after search event', () async {
+      final mockWithName = MockCoffee();
+      when(mockWithName.name).thenReturn('query');
+      when(coffeeRepository.getAll()).thenAnswer((_) async => [
+            MockCoffee(),
+            MockCoffee(),
+            mockWithName,
+          ]);
+      final states = <CoffeeListState>[];
+      states.add(bloc.state);
+      bloc.stream.listen((state) => states.add(state));
+      bloc.add(const CoffeeListEvent.startLoading());
+      bloc.add(const CoffeeListEvent.search('query'));
+      await Future.delayed(Duration.zero);
+      final expected = [empty, loading, loaded, loading, loaded];
+      expect(states, expected);
+      final list = bloc.state.maybeWhen(
+        orElse: () => [],
+        loaded: (_, __, queryFiltered) => queryFiltered,
+      );
+      expect(list?.length, 1);
+    });
+    test(
+        'should return [empty, loading, loaded, loading, loaded] '
+            'and list = null when startLoading event after search event', () async {
+      when(coffeeRepository.getAll()).thenAnswer((_) async => [
+        MockCoffee(),
+        MockCoffee(),
+        MockCoffee(),
+      ]);
+      final states = <CoffeeListState>[];
+      states.add(bloc.state);
+      bloc.stream.listen((state) => states.add(state));
+      bloc.add(const CoffeeListEvent.startLoading());
+      bloc.add(const CoffeeListEvent.search('query'));
+      await Future.delayed(Duration.zero);
+      final expected = [empty, loading, loaded, loading, loaded];
+      expect(states, expected);
+      final list = bloc.state.maybeWhen(
+        orElse: () => [],
+        loaded: (_, __, queryFiltered) => queryFiltered,
+      );
+      expect(list, null);
+    });
+    test(
+        'should return [empty, loading, loaded, loading, loaded] '
+            'and list = null when startLoading event after search event', () async {
+      final mockWithName = MockCoffee();
+      when(mockWithName.name).thenReturn('query');
+      when(coffeeRepository.getAll()).thenAnswer((_) async => [
+        MockCoffee(),
+        MockCoffee(),
+        mockWithName,
+      ]);
+      final states = <CoffeeListState>[];
+      states.add(bloc.state);
+      bloc.stream.listen((state) => states.add(state));
+      bloc.add(const CoffeeListEvent.startLoading());
+      bloc.add(const CoffeeListEvent.search('que'));
+      await Future.delayed(Duration.zero);
+      var list = bloc.state.maybeWhen(
+        orElse: () => null,
+        loaded: (_, __, queryFiltered) => queryFiltered,
+      );
+      expect(list?.length, 1);
+      bloc.add(const CoffeeListEvent.search('qu'));
+      await Future.delayed(Duration.zero);
+      final expected = [empty, loading, loaded, loading, loaded, loaded];
+      expect(states, expected);
+      list = bloc.state.maybeWhen(
+        orElse: () => null,
+        loaded: (_, __, queryFiltered) => queryFiltered,
+      );
+      expect(list, null);
+    });
   });
 }
