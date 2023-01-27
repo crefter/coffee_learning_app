@@ -19,58 +19,62 @@ class HomePageCoffeeList extends StatelessWidget {
         builder: (context, state) {
           return state.maybeWhen(
             orElse: () => const CircularProgressIndicator(),
-            loaded: (_, list) => GridView.builder(
-              itemCount: list.length,
-              itemBuilder: (context, index) {
-                final Coffee coffee = list[index];
-                return HomePageCoffeeListItem(
-                  coffee: coffee,
-                  onCardClick: () {
-                    context.router.push(
-                      CoffeeDetailsRoute(
-                          coffee: coffee,
-                          onFavoriteClick: () {
-                            context.read<FavoriteCoffeesBloc>().add(
+            loaded: (_, listOfGrouped, listOfQueryFiltered) {
+              final list = listOfQueryFiltered ?? listOfGrouped;
+              return GridView.builder(
+                itemCount: list.length,
+                itemBuilder: (context, index) {
+                  final Coffee coffee = list[index];
+                  return HomePageCoffeeListItem(
+                    coffee: coffee,
+                    onCardClick: () {
+                      context.router.push(
+                        CoffeeDetailsRoute(
+                            coffee: coffee,
+                            onFavoriteClick: () {
+                              context.read<FavoriteCoffeesBloc>().add(
+                                FavoriteCoffeesEvent.update(coffee),
+                              );
+                            }),
+                      );
+                    },
+                  );
+                },
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 16,
+                  crossAxisSpacing: 16,
+                  mainAxisExtent: 230,
+                ),
+              );
+            },
+            error: (_, list, __) =>
+                GridView.builder(
+                  itemCount: list.length,
+                  itemBuilder: (context, index) {
+                    final Coffee coffee = list[index];
+                    return HomePageCoffeeListItem(
+                      coffee: coffee,
+                      onCardClick: () {
+                        context.router.push(
+                          CoffeeDetailsRoute(
+                              coffee: coffee,
+                              onFavoriteClick: () {
+                                context.read<FavoriteCoffeesBloc>().add(
                                   FavoriteCoffeesEvent.update(coffee),
                                 );
-                          }),
+                              }),
+                        );
+                      },
                     );
                   },
-                );
-              },
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                mainAxisExtent: 230,
-              ),
-            ),
-            error: (_, list, __) => GridView.builder(
-              itemCount: list.length,
-              itemBuilder: (context, index) {
-                final Coffee coffee = list[index];
-                return HomePageCoffeeListItem(
-                  coffee: coffee,
-                  onCardClick: () {
-                    context.router.push(
-                      CoffeeDetailsRoute(
-                          coffee: coffee,
-                          onFavoriteClick: () {
-                            context.read<FavoriteCoffeesBloc>().add(
-                              FavoriteCoffeesEvent.update(coffee),
-                            );
-                          }),
-                    );
-                  },
-                );
-              },
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                mainAxisExtent: 230,
-              ),
-            ),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 16,
+                    crossAxisSpacing: 16,
+                    mainAxisExtent: 230,
+                  ),
+                ),
           );
         },
       ),

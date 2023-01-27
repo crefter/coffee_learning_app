@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:learning/home/presentation/bloc/coffee_list/coffee_list_bloc.dart';
 
 class HomePageSliverAppBar extends StatelessWidget {
   const HomePageSliverAppBar({
@@ -61,6 +63,9 @@ class HomePageSliverAppBar extends StatelessWidget {
               SizedBox(
                 height: 40,
                 child: TextField(
+                  onChanged: (query) => context.read<CoffeeListBloc>().add(
+                        CoffeeListEvent.search(query),
+                      ),
                   textAlignVertical: TextAlignVertical.center,
                   style: theme.textTheme.displayMedium,
                   decoration: InputDecoration(

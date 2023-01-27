@@ -4,11 +4,13 @@ part of 'coffee_list_bloc.dart';
 class CoffeeListState with _$CoffeeListState {
   const factory CoffeeListState.empty() = EmptyCoffeeListState;
 
-  const factory CoffeeListState.loading() = LoadingCoffeeListState;
+  const factory CoffeeListState.loading(
+  ) = LoadingCoffeeListState;
 
   const factory CoffeeListState.loaded(
     List<Coffee> coffees,
     List<Coffee> filteredCoffees,
+    List<Coffee>? queryFilteredCoffees,
   ) = LoadedCoffeeListState;
 
   const factory CoffeeListState.error(

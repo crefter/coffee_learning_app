@@ -20,18 +20,21 @@ mixin _$CoffeeListEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() startLoading,
     required TResult Function(CoffeeType type) typeSelected,
+    required TResult Function(String query) search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? startLoading,
     TResult? Function(CoffeeType type)? typeSelected,
+    TResult? Function(String query)? search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startLoading,
     TResult Function(CoffeeType type)? typeSelected,
+    TResult Function(String query)? search,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$CoffeeListEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_StartLoadingCoffeeListEvent value) startLoading,
     required TResult Function(_TypeSelectedCoffeeListEvent value) typeSelected,
+    required TResult Function(_CoffeeListEventSearch value) search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartLoadingCoffeeListEvent value)? startLoading,
     TResult? Function(_TypeSelectedCoffeeListEvent value)? typeSelected,
+    TResult? Function(_CoffeeListEventSearch value)? search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartLoadingCoffeeListEvent value)? startLoading,
     TResult Function(_TypeSelectedCoffeeListEvent value)? typeSelected,
+    TResult Function(_CoffeeListEventSearch value)? search,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -117,6 +123,7 @@ class _$_StartLoadingCoffeeListEvent implements _StartLoadingCoffeeListEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() startLoading,
     required TResult Function(CoffeeType type) typeSelected,
+    required TResult Function(String query) search,
   }) {
     return startLoading();
   }
@@ -126,6 +133,7 @@ class _$_StartLoadingCoffeeListEvent implements _StartLoadingCoffeeListEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? startLoading,
     TResult? Function(CoffeeType type)? typeSelected,
+    TResult? Function(String query)? search,
   }) {
     return startLoading?.call();
   }
@@ -135,6 +143,7 @@ class _$_StartLoadingCoffeeListEvent implements _StartLoadingCoffeeListEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startLoading,
     TResult Function(CoffeeType type)? typeSelected,
+    TResult Function(String query)? search,
     required TResult orElse(),
   }) {
     if (startLoading != null) {
@@ -148,6 +157,7 @@ class _$_StartLoadingCoffeeListEvent implements _StartLoadingCoffeeListEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_StartLoadingCoffeeListEvent value) startLoading,
     required TResult Function(_TypeSelectedCoffeeListEvent value) typeSelected,
+    required TResult Function(_CoffeeListEventSearch value) search,
   }) {
     return startLoading(this);
   }
@@ -157,6 +167,7 @@ class _$_StartLoadingCoffeeListEvent implements _StartLoadingCoffeeListEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartLoadingCoffeeListEvent value)? startLoading,
     TResult? Function(_TypeSelectedCoffeeListEvent value)? typeSelected,
+    TResult? Function(_CoffeeListEventSearch value)? search,
   }) {
     return startLoading?.call(this);
   }
@@ -166,6 +177,7 @@ class _$_StartLoadingCoffeeListEvent implements _StartLoadingCoffeeListEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartLoadingCoffeeListEvent value)? startLoading,
     TResult Function(_TypeSelectedCoffeeListEvent value)? typeSelected,
+    TResult Function(_CoffeeListEventSearch value)? search,
     required TResult orElse(),
   }) {
     if (startLoading != null) {
@@ -248,6 +260,7 @@ class _$_TypeSelectedCoffeeListEvent implements _TypeSelectedCoffeeListEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() startLoading,
     required TResult Function(CoffeeType type) typeSelected,
+    required TResult Function(String query) search,
   }) {
     return typeSelected(type);
   }
@@ -257,6 +270,7 @@ class _$_TypeSelectedCoffeeListEvent implements _TypeSelectedCoffeeListEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? startLoading,
     TResult? Function(CoffeeType type)? typeSelected,
+    TResult? Function(String query)? search,
   }) {
     return typeSelected?.call(type);
   }
@@ -266,6 +280,7 @@ class _$_TypeSelectedCoffeeListEvent implements _TypeSelectedCoffeeListEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startLoading,
     TResult Function(CoffeeType type)? typeSelected,
+    TResult Function(String query)? search,
     required TResult orElse(),
   }) {
     if (typeSelected != null) {
@@ -279,6 +294,7 @@ class _$_TypeSelectedCoffeeListEvent implements _TypeSelectedCoffeeListEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_StartLoadingCoffeeListEvent value) startLoading,
     required TResult Function(_TypeSelectedCoffeeListEvent value) typeSelected,
+    required TResult Function(_CoffeeListEventSearch value) search,
   }) {
     return typeSelected(this);
   }
@@ -288,6 +304,7 @@ class _$_TypeSelectedCoffeeListEvent implements _TypeSelectedCoffeeListEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartLoadingCoffeeListEvent value)? startLoading,
     TResult? Function(_TypeSelectedCoffeeListEvent value)? typeSelected,
+    TResult? Function(_CoffeeListEventSearch value)? search,
   }) {
     return typeSelected?.call(this);
   }
@@ -297,6 +314,7 @@ class _$_TypeSelectedCoffeeListEvent implements _TypeSelectedCoffeeListEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartLoadingCoffeeListEvent value)? startLoading,
     TResult Function(_TypeSelectedCoffeeListEvent value)? typeSelected,
+    TResult Function(_CoffeeListEventSearch value)? search,
     required TResult orElse(),
   }) {
     if (typeSelected != null) {
@@ -317,13 +335,154 @@ abstract class _TypeSelectedCoffeeListEvent implements CoffeeListEvent {
 }
 
 /// @nodoc
+abstract class _$$_CoffeeListEventSearchCopyWith<$Res> {
+  factory _$$_CoffeeListEventSearchCopyWith(_$_CoffeeListEventSearch value,
+          $Res Function(_$_CoffeeListEventSearch) then) =
+      __$$_CoffeeListEventSearchCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String query});
+}
+
+/// @nodoc
+class __$$_CoffeeListEventSearchCopyWithImpl<$Res>
+    extends _$CoffeeListEventCopyWithImpl<$Res, _$_CoffeeListEventSearch>
+    implements _$$_CoffeeListEventSearchCopyWith<$Res> {
+  __$$_CoffeeListEventSearchCopyWithImpl(_$_CoffeeListEventSearch _value,
+      $Res Function(_$_CoffeeListEventSearch) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? query = null,
+  }) {
+    return _then(_$_CoffeeListEventSearch(
+      null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_CoffeeListEventSearch implements _CoffeeListEventSearch {
+  const _$_CoffeeListEventSearch(this.query);
+
+  @override
+  final String query;
+
+  @override
+  String toString() {
+    return 'CoffeeListEvent.search(query: $query)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_CoffeeListEventSearch &&
+            (identical(other.query, query) || other.query == query));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, query);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_CoffeeListEventSearchCopyWith<_$_CoffeeListEventSearch> get copyWith =>
+      __$$_CoffeeListEventSearchCopyWithImpl<_$_CoffeeListEventSearch>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() startLoading,
+    required TResult Function(CoffeeType type) typeSelected,
+    required TResult Function(String query) search,
+  }) {
+    return search(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? startLoading,
+    TResult? Function(CoffeeType type)? typeSelected,
+    TResult? Function(String query)? search,
+  }) {
+    return search?.call(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? startLoading,
+    TResult Function(CoffeeType type)? typeSelected,
+    TResult Function(String query)? search,
+    required TResult orElse(),
+  }) {
+    if (search != null) {
+      return search(query);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StartLoadingCoffeeListEvent value) startLoading,
+    required TResult Function(_TypeSelectedCoffeeListEvent value) typeSelected,
+    required TResult Function(_CoffeeListEventSearch value) search,
+  }) {
+    return search(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_StartLoadingCoffeeListEvent value)? startLoading,
+    TResult? Function(_TypeSelectedCoffeeListEvent value)? typeSelected,
+    TResult? Function(_CoffeeListEventSearch value)? search,
+  }) {
+    return search?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_StartLoadingCoffeeListEvent value)? startLoading,
+    TResult Function(_TypeSelectedCoffeeListEvent value)? typeSelected,
+    TResult Function(_CoffeeListEventSearch value)? search,
+    required TResult orElse(),
+  }) {
+    if (search != null) {
+      return search(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CoffeeListEventSearch implements CoffeeListEvent {
+  const factory _CoffeeListEventSearch(final String query) =
+      _$_CoffeeListEventSearch;
+
+  String get query;
+  @JsonKey(ignore: true)
+  _$$_CoffeeListEventSearchCopyWith<_$_CoffeeListEventSearch> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CoffeeListState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(
-            List<Coffee> coffees, List<Coffee> filteredCoffees)
+    required TResult Function(List<Coffee> coffees,
+            List<Coffee> filteredCoffees, List<Coffee>? queryFilteredCoffees)
         loaded,
     required TResult Function(
             List<Coffee> coffees, List<Coffee> filteredCoffees, String error)
@@ -334,7 +493,8 @@ mixin _$CoffeeListState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
     TResult? Function()? loading,
-    TResult? Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
+    TResult? Function(List<Coffee> coffees, List<Coffee> filteredCoffees,
+            List<Coffee>? queryFilteredCoffees)?
         loaded,
     TResult? Function(
             List<Coffee> coffees, List<Coffee> filteredCoffees, String error)?
@@ -345,7 +505,8 @@ mixin _$CoffeeListState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
+    TResult Function(List<Coffee> coffees, List<Coffee> filteredCoffees,
+            List<Coffee>? queryFilteredCoffees)?
         loaded,
     TResult Function(
             List<Coffee> coffees, List<Coffee> filteredCoffees, String error)?
@@ -438,8 +599,8 @@ class _$EmptyCoffeeListState implements EmptyCoffeeListState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(
-            List<Coffee> coffees, List<Coffee> filteredCoffees)
+    required TResult Function(List<Coffee> coffees,
+            List<Coffee> filteredCoffees, List<Coffee>? queryFilteredCoffees)
         loaded,
     required TResult Function(
             List<Coffee> coffees, List<Coffee> filteredCoffees, String error)
@@ -453,7 +614,8 @@ class _$EmptyCoffeeListState implements EmptyCoffeeListState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
     TResult? Function()? loading,
-    TResult? Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
+    TResult? Function(List<Coffee> coffees, List<Coffee> filteredCoffees,
+            List<Coffee>? queryFilteredCoffees)?
         loaded,
     TResult? Function(
             List<Coffee> coffees, List<Coffee> filteredCoffees, String error)?
@@ -467,7 +629,8 @@ class _$EmptyCoffeeListState implements EmptyCoffeeListState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
+    TResult Function(List<Coffee> coffees, List<Coffee> filteredCoffees,
+            List<Coffee>? queryFilteredCoffees)?
         loaded,
     TResult Function(
             List<Coffee> coffees, List<Coffee> filteredCoffees, String error)?
@@ -562,8 +725,8 @@ class _$LoadingCoffeeListState implements LoadingCoffeeListState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(
-            List<Coffee> coffees, List<Coffee> filteredCoffees)
+    required TResult Function(List<Coffee> coffees,
+            List<Coffee> filteredCoffees, List<Coffee>? queryFilteredCoffees)
         loaded,
     required TResult Function(
             List<Coffee> coffees, List<Coffee> filteredCoffees, String error)
@@ -577,7 +740,8 @@ class _$LoadingCoffeeListState implements LoadingCoffeeListState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
     TResult? Function()? loading,
-    TResult? Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
+    TResult? Function(List<Coffee> coffees, List<Coffee> filteredCoffees,
+            List<Coffee>? queryFilteredCoffees)?
         loaded,
     TResult? Function(
             List<Coffee> coffees, List<Coffee> filteredCoffees, String error)?
@@ -591,7 +755,8 @@ class _$LoadingCoffeeListState implements LoadingCoffeeListState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
+    TResult Function(List<Coffee> coffees, List<Coffee> filteredCoffees,
+            List<Coffee>? queryFilteredCoffees)?
         loaded,
     TResult Function(
             List<Coffee> coffees, List<Coffee> filteredCoffees, String error)?
@@ -652,7 +817,10 @@ abstract class _$$LoadedCoffeeListStateCopyWith<$Res> {
           $Res Function(_$LoadedCoffeeListState) then) =
       __$$LoadedCoffeeListStateCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Coffee> coffees, List<Coffee> filteredCoffees});
+  $Res call(
+      {List<Coffee> coffees,
+      List<Coffee> filteredCoffees,
+      List<Coffee>? queryFilteredCoffees});
 }
 
 /// @nodoc
@@ -668,6 +836,7 @@ class __$$LoadedCoffeeListStateCopyWithImpl<$Res>
   $Res call({
     Object? coffees = null,
     Object? filteredCoffees = null,
+    Object? queryFilteredCoffees = freezed,
   }) {
     return _then(_$LoadedCoffeeListState(
       null == coffees
@@ -678,6 +847,10 @@ class __$$LoadedCoffeeListStateCopyWithImpl<$Res>
           ? _value.filteredCoffees
           : filteredCoffees // ignore: cast_nullable_to_non_nullable
               as List<Coffee>,
+      freezed == queryFilteredCoffees
+          ? _value.queryFilteredCoffees
+          : queryFilteredCoffees // ignore: cast_nullable_to_non_nullable
+              as List<Coffee>?,
     ));
   }
 }
@@ -685,16 +858,19 @@ class __$$LoadedCoffeeListStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedCoffeeListState implements LoadedCoffeeListState {
-  const _$LoadedCoffeeListState(this.coffees, this.filteredCoffees);
+  const _$LoadedCoffeeListState(
+      this.coffees, this.filteredCoffees, this.queryFilteredCoffees);
 
   @override
   final List<Coffee> coffees;
   @override
   final List<Coffee> filteredCoffees;
+  @override
+  final List<Coffee>? queryFilteredCoffees;
 
   @override
   String toString() {
-    return 'CoffeeListState.loaded(coffees: $coffees, filteredCoffees: $filteredCoffees)';
+    return 'CoffeeListState.loaded(coffees: $coffees, filteredCoffees: $filteredCoffees, queryFilteredCoffees: $queryFilteredCoffees)';
   }
 
   @override
@@ -704,14 +880,17 @@ class _$LoadedCoffeeListState implements LoadedCoffeeListState {
             other is _$LoadedCoffeeListState &&
             const DeepCollectionEquality().equals(other.coffees, coffees) &&
             const DeepCollectionEquality()
-                .equals(other.filteredCoffees, filteredCoffees));
+                .equals(other.filteredCoffees, filteredCoffees) &&
+            const DeepCollectionEquality()
+                .equals(other.queryFilteredCoffees, queryFilteredCoffees));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(coffees),
-      const DeepCollectionEquality().hash(filteredCoffees));
+      const DeepCollectionEquality().hash(filteredCoffees),
+      const DeepCollectionEquality().hash(queryFilteredCoffees));
 
   @JsonKey(ignore: true)
   @override
@@ -725,14 +904,14 @@ class _$LoadedCoffeeListState implements LoadedCoffeeListState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(
-            List<Coffee> coffees, List<Coffee> filteredCoffees)
+    required TResult Function(List<Coffee> coffees,
+            List<Coffee> filteredCoffees, List<Coffee>? queryFilteredCoffees)
         loaded,
     required TResult Function(
             List<Coffee> coffees, List<Coffee> filteredCoffees, String error)
         error,
   }) {
-    return loaded(coffees, filteredCoffees);
+    return loaded(coffees, filteredCoffees, queryFilteredCoffees);
   }
 
   @override
@@ -740,13 +919,14 @@ class _$LoadedCoffeeListState implements LoadedCoffeeListState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
     TResult? Function()? loading,
-    TResult? Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
+    TResult? Function(List<Coffee> coffees, List<Coffee> filteredCoffees,
+            List<Coffee>? queryFilteredCoffees)?
         loaded,
     TResult? Function(
             List<Coffee> coffees, List<Coffee> filteredCoffees, String error)?
         error,
   }) {
-    return loaded?.call(coffees, filteredCoffees);
+    return loaded?.call(coffees, filteredCoffees, queryFilteredCoffees);
   }
 
   @override
@@ -754,7 +934,8 @@ class _$LoadedCoffeeListState implements LoadedCoffeeListState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
+    TResult Function(List<Coffee> coffees, List<Coffee> filteredCoffees,
+            List<Coffee>? queryFilteredCoffees)?
         loaded,
     TResult Function(
             List<Coffee> coffees, List<Coffee> filteredCoffees, String error)?
@@ -762,7 +943,7 @@ class _$LoadedCoffeeListState implements LoadedCoffeeListState {
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(coffees, filteredCoffees);
+      return loaded(coffees, filteredCoffees, queryFilteredCoffees);
     }
     return orElse();
   }
@@ -807,11 +988,13 @@ class _$LoadedCoffeeListState implements LoadedCoffeeListState {
 
 abstract class LoadedCoffeeListState implements CoffeeListState {
   const factory LoadedCoffeeListState(
-          final List<Coffee> coffees, final List<Coffee> filteredCoffees) =
-      _$LoadedCoffeeListState;
+      final List<Coffee> coffees,
+      final List<Coffee> filteredCoffees,
+      final List<Coffee>? queryFilteredCoffees) = _$LoadedCoffeeListState;
 
   List<Coffee> get coffees;
   List<Coffee> get filteredCoffees;
+  List<Coffee>? get queryFilteredCoffees;
   @JsonKey(ignore: true)
   _$$LoadedCoffeeListStateCopyWith<_$LoadedCoffeeListState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -905,8 +1088,8 @@ class _$ErrorCoffeeListState implements ErrorCoffeeListState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(
-            List<Coffee> coffees, List<Coffee> filteredCoffees)
+    required TResult Function(List<Coffee> coffees,
+            List<Coffee> filteredCoffees, List<Coffee>? queryFilteredCoffees)
         loaded,
     required TResult Function(
             List<Coffee> coffees, List<Coffee> filteredCoffees, String error)
@@ -920,7 +1103,8 @@ class _$ErrorCoffeeListState implements ErrorCoffeeListState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
     TResult? Function()? loading,
-    TResult? Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
+    TResult? Function(List<Coffee> coffees, List<Coffee> filteredCoffees,
+            List<Coffee>? queryFilteredCoffees)?
         loaded,
     TResult? Function(
             List<Coffee> coffees, List<Coffee> filteredCoffees, String error)?
@@ -934,7 +1118,8 @@ class _$ErrorCoffeeListState implements ErrorCoffeeListState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(List<Coffee> coffees, List<Coffee> filteredCoffees)?
+    TResult Function(List<Coffee> coffees, List<Coffee> filteredCoffees,
+            List<Coffee>? queryFilteredCoffees)?
         loaded,
     TResult Function(
             List<Coffee> coffees, List<Coffee> filteredCoffees, String error)?
