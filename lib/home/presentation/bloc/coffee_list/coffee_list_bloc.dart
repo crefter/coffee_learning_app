@@ -90,7 +90,7 @@ class CoffeeListBloc extends Bloc<CoffeeListEvent, CoffeeListState> {
       (element) => element.name.toLowerCase().contains(event.query.toLowerCase()),
     ).toList();
     if (queryFilteredList.isEmpty) {
-      emit(CoffeeListState.loaded(coffees, filteredCoffees, null));
+      emit(CoffeeListState.loaded(coffees, filteredCoffees, []));
     } else {
       emit(CoffeeListState.loaded(coffees, filteredCoffees, queryFilteredList));
     }

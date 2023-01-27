@@ -171,7 +171,7 @@ void main() {
     });
     test(
         'should return [empty, loading, loaded, loading, loaded] '
-            'and list = null when startLoading event after search event', () async {
+            'and length = 0 when startLoading event after search event', () async {
       when(coffeeRepository.getAll()).thenAnswer((_) async => [
         MockCoffee(),
         MockCoffee(),
@@ -189,7 +189,7 @@ void main() {
         orElse: () => [],
         loaded: (_, __, queryFiltered) => queryFiltered,
       );
-      expect(list, null);
+      expect(list?.length, 0);
     });
     test(
         'should return [empty, loading, loaded, loading, loaded] '
